@@ -1,0 +1,126 @@
+﻿
+@{
+    ViewData["Title"] = "TourDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var tour = ViewData["Tour"] as Tour;
+}
+
+<section class="tour-two tour-list">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="tour-details__content">
+                        <div class="tour-two__top">
+                            <div class="tour-two__top-left">
+                                <h3>@tour.Name</h3>
+                            </div>
+                            <div class="tour-two__right">
+                            <p>
+                                <span>@tour.Price</span> <br>
+                                <strike>@tour.Price</strike>
+                            </p>
+                            </div>
+                        </div>
+                        <ul class="tour-one__meta list-unstyled">
+                        <li><a href="javascript:void(0)"><i class="far fa-clock"></i> @tour.DayCount ngày</a></li>
+                        <li><a href="javascript:void(0)"><i class="far fa-user-circle"></i> @tour.MinPeople - @tour.MaxPeople người</a></li>
+                        <li><a href="javascript:void(0)"><i class="far fa-map"></i>@tour.Province?.Name</a></li>
+                        </ul>
+
+                        <div class="tour-details__gallery-carousel">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="tour-details__gallery-image">
+                                    <img src="/uploads/@tour.Image" alt="" height="468" width="770">
+                                    </div>
+                                </div>
+                              @* @foreach($tour->tour_images as $image)
+                                    <div class="swiper-slide">
+                                        <div class="tour-details__gallery-image">
+                                            <img src="{{ $image->imageUrl() }}" alt="" height="468" width="770" >
+                                        </div>
+                                    </div>
+                               @endforeach*@
+                            </div>
+                        </div>
+
+                        <div class="tour-details__gallery-thumb-carousel">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="tour-details__gallery-thumb-image">
+                                        <img src="/uploads/@tour.Image" alt="" height="140px" width="146px">
+                                    </div>
+                                </div>
+                                @*@foreach($tour->tour_images as $image)
+                                <div class="swiper-slide">
+                                    <div class="tour-details__gallery-thumb-image">
+                                        <img src="{!! $image->imageUrl() !!}" alt="" height="140px" width="146px">
+                                    </div>
+                                </div>
+                                @endforeach*@
+                            </div>
+                        </div><!-- /.tour-details__gallery-thumb-carousel -->
+                        <h3 class="tour-details__title">Nội dung</h3><!-- /.tour-details__title -->
+                        <p>@tour.Detail</p>
+                        <div class="tour-details__spacer"></div><!-- /.tour-details__spacer -->
+                        <h3 class="tour-details__title">Lịch Trình</h3><!-- /.tour-details__title -->
+
+                        <div class="tour-details__plan">
+                            @*@foreach($tour->schedules as $schedule)
+                            <div class="tour-details__plan-single">
+                                <div class="tour-details__plan-count">
+                                    {{ $schedule->day_id }}
+                                </div>
+                                <div class="tour-details__plan-content">
+                                    <h3>@lang('validation.attributes.day') {{ $schedule->day_id }}: {{ $schedule->name }}</h3>
+                                    <span>{{ date('H:i',strtotime($schedule->start_date)) }} đến {{ date('H:i',strtotime($schedule->end_date)) }}</span>
+                                    <p>{{ $schedule->descriptions }}.
+                                    </p>
+                                </div>
+                            </div>
+                            @endforeach*@
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="tour-sidebar">
+                        <div class="tour-sidebar__search tour-sidebar__single">
+                            <h3>Đặt Lịch</h3>
+                            <form action="#" method="post" class="tour-sidebar__search-form">
+                                <input type="hidden" name="tour_id" value="{{ $tour->id }}">
+                                <div class="input-group">
+                                    <input type="text" name="full_name" placeholder="Họ tên">
+                                </div>
+                                <div class="input-group">
+                                    <input type="email" name="email" placeholder="Email">
+                                </div>
+                                <div class="input-group">
+                                    <input type="text" name="phone" placeholder="Số điện thoại">
+                                </div>
+                                <div class="input-group">
+                                    <input type="text" name="address" placeholder="Địa chủ">
+                                </div>
+                                <div class="input-group">
+                                    <textarea name="requirement" placeholder="Nội dung"></textarea>
+                                </div>
+                                <div class="input-group">
+                                    <button type="submit" class="thm-btn">Đặt ngay</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="tour-sidebar__organizer">
+                            <h3>Hướng dẫn viên</h3>
+                            <div class="tour-sidebar__organizer-content">
+                                <img src="{!! $tour->guide->avatarUrl() !!}" alt="" height="76" width="76" style="border-radius: 50%">
+                                <h3>Nguyễn Văn A</h3>
+                            <a href="tel:08433434343" class="text-danger"><i class="fa fa-phone-alt"></i> 08433434343</a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+

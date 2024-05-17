@@ -1,5 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    var popTours= ViewData["PopTours"] as List<Tour>;
 }
 
 <section class="banner-one" style="background-image: url('{{ asset('images/background/banner-1-1-bg.jpg') }}');">
@@ -13,7 +14,7 @@
                             <label for="place">Địa chỉ</label>
                             <select class="selectpicker" name="address" id="type">
                                 <option value="">Chọn Địa Chỉ</option>
-                                    <option value="{{ $address->province_id }}">{{ $address->type }} {{ $address->province }}</option>
+                                    <option value="#">{{ $address->type }} {{ $address->province }}</option>
                             </select>
                         </div>
                         <div class="tour-search-one__input-box">
@@ -91,32 +92,36 @@
                 <h3>Được lựa chọn nhiều</h3>
             </div>
             <div class="row">
-                    <div class="col-xl-4 col-lg-6">
-                        <div class="tour-one__single">
-                            <div class="tour-one__image">
-                                <img src="{{ $tour->imageUrl() }}" alt="">
-                                <a href="{!! route('tours.detail',$tour->id) !!}"><i class="fa fa-heart"></i></a>
-                            </div>
-                            <div class="tour-one__content">
-                                <h3><a href="{!! route('tours.detail',$tour->id) !!}">{{ $tour->name }}</a></h3>
-                                <p><span>{{ \Akaunting\Money\Money::VND($tour->price) }}</span></p>
-                                <ul class="tour-one__meta list-unstyled">
-                                    <li><a href="{!! route('tours.detail',$tour->id) !!}"><i class="far fa-clock"></i> {{ $tour->days }} validation.attributes.day')</a></li>
-                                    <li><a href="{!! route('tours.detail',$tour->id) !!}"><i class="far fa-user-circle"></i> {{ $tour->min_people }} - {{ $tour->max_people }} validation.attributes.people')</a></li>
-                                    <li><a href="{!! route('tours.detail',$tour->id) !!}"><i class="far fa-map"></i> {{ $tour->province->province }}</a></li>
-                                </ul>
-                            </div>
+
+            @foreach (var tour in popTours)
+            {
+                <div class="col-xl-4 col-lg-6">
+                    <div class="tour-one__single">
+                        <div class="tour-one__image">
+                            <img src="/uploads/@tour.Image" alt="">
+                            <a asp-controller="Tour" asp-action="TourDetail" asp-route-id="@tour.Id"><i class="fa fa-heart"></i></a>
+                        </div>
+                        <div class="tour-one__content">
+                            <h3><a asp-controller="Tour" asp-action="TourDetail" asp-route-id="@tour.Id">@tour.Name</a></h3>
+                            <p><span>@tour.Price</span></p>
+                            <ul class="tour-one__meta list-unstyled">
+                                <li><a asp-controller="Tour" asp-action="TourDetail" asp-route-id="@tour.Id"><i class="far fa-clock"></i> @tour.DayCount ngày</a></li>
+                                <li><a asp-controller="Tour" asp-action="TourDetail" asp-route-id="@tour.Id"><i class="far fa-user-circle"></i>@tour.MinPeople - @tour.MaxPeople người</a></li>
+                                <li><a asp-controller="Tour" asp-action="TourDetail" asp-route-id="@tour.Id"><i class="far fa-map"></i> @tour.Province?.Name</a></li>
+                            </ul>
                         </div>
                     </div>
+                </div>
+            }
             </div>
         </div>
     </section>
 
     <section class="video-one" style="background-image: url('{{ asset('images/background/video-bg-1-1.jpg') }}');">
         <div class="container text-center">
-            <a href="https://www.youtube.com/watch?v=i9E_Blai8vk" class="video-one__btn video-popup"><i class="fa fa-play"></i></a><!-- /.video-one__btn -->
+            <a href="https://www.youtube.com/watch?v=i9E_Blai8vk" class="video-one__btn video-popup"><i class="fa fa-play"></i></a>
             <p>Nơi bạn yêu thích</p>
-            <h3><span>{{ $app_info['name'] ?? config('constants.DEFAULT.NAME') }}</span> Hàng Đầu Thế Giới <br> Về <span>Nền Tảng Du Lịch</span></h3>
+            <h3><span>Travel</span> Hàng Đầu Thế Giới <br> Về <span>Nền Tảng Du Lịch</span></h3>
         </div>
     </section>
 
@@ -128,7 +133,7 @@
                         <div class="cta-three__content-inner">
                             <div class="block-title text-left">
                                 <p>Chuyên Nghiệp</p>
-                                <h3>Được Tin Tưởng <br> Bởi Hơn <span class="counter">{{ $countFinishTour }}</span> <br> Khách Hàng</h3>
+                                <h3>Được Tin Tưởng <br> Bởi Hơn <span class="counter">199</span> <br> Khách Hàng</h3>
                             </div>
                             <img src="{{ asset('images/background/cta-3-1.jpg') }}" data-wow-duration="1500ms" class="wow fadeInLeft img-fluid" alt="">
                             <div class="cta-three__box">
@@ -169,13 +174,13 @@
             <div class="row justify-content-between">
                 <div class="col-xl-2 col-md-6">
                     <div class="funfact-one__single">
-                        <h3><span class="counter">{{ $countGuide }}</span></h3>
-                        <p>validation.attributes.tour_guide')</p>
+                        <h3><span class="counter">99</span></h3>
+                        <p>Hướng dẫn viên</p>
                     </div>
                 </div>
                 <div class="col-xl-2 col-md-6 justify-content-xl-center">
                     <div class="funfact-one__single">
-                        <h3><span class="counter">{{ $countFinishTour }}</span></h3>
+                        <h3><span class="counter">100</span></h3>
                         <p>Tours Hoàn Thành</p>
                     </div>
                 </div>
@@ -187,7 +192,7 @@
                 </div>
                 <div class="col-xl-2 col-md-6 justify-content-xl-end text-xl-right">
                     <div class="funfact-one__single">
-                        <h3><span class="counter">{{ $countFinishTour }}</span>+</h3>
+                        <h3><span class="counter">100</span>+</h3>
                         <p>KH Hài Lòng</p>
                     </div>
                 </div>
@@ -204,15 +209,15 @@
                     <div class="col-lg-4 wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="000ms">
                         <div class="blog-one__single">
                             <div class="blog-one__image">
-                                <img src="{!! $blog->imageUrl() !!}" alt="">
-                                <a href="{!! route('blogs.detail',$blog->id) !!}"><i class="fa fa-long-arrow-alt-right"></i></a>
+                                <img src="#" alt="">
+                                <a href="#"><i class="fa fa-long-arrow-alt-right"></i></a>
                             </div>
                             <div class="blog-one__content">
                                 <ul class="list-unstyled blog-one__meta">
-                                    <li><a href="{!! route('blogs.detail',$blog->id) !!}"><i class="far fa-user-circle"></i> {{ $blog->create_name }}</a></li>
-                                    <li><a href="{!! route('blogs.detail',$blog->id) !!}"><i class="far fa-clock-o"></i> {{ $blog->created_at->diffForHumans() }}</a></li>
+                                    <li><a href="#"><i class="far fa-user-circle"></i> {{ $blog->create_name }}</a></li>
+                                    <li><a href="#"><i class="far fa-clock-o"></i> {{ $blog->created_at->diffForHumans() }}</a></li>
                                 </ul>
-                                <h3><a href="{!! route('blogs.detail',$blog->id) !!}">{{ $blog->name }}</a></h3>
+                                <h3><a href="#">{{ $blog->name }}</a></h3>
                             </div>
                         </div>
                     </div>

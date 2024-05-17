@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout_admin.cshtml";
     var tours = ViewData["Tours"] as List<Tour>;
@@ -22,16 +21,23 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach(var tour in tours)
+                    @foreach (var tour in tours)
                     {
                         <tr>
                             <th></th>
-                            <th>@tour.Image</th>
+                            <th>
+                                <img src="/uploads/@tour.Image" height="80px" width="150px" alt="@tour.Name" />
+                            </th>
                             <th>@tour.Name</th>
                             <th>@tour.MinPeople - @tour.MaxPeople </th>
                             <th>@tour.DayCount</th>
                             <th>@tour.Province</th>
-                            <th></th>
+                            <th>
+                                <a asp-action="CreateOrEdit" asp-controller="Tour" asp-route-id="@tour.Id" class="btn btn-sm btn-success d-inline-block">Sửa</a>
+                                <form class="d-inline-block" method="Post" asp-action="Delete" asp-controller="Tour" asp-route-id="@tour.Id">
+                                    <button class="btn btn-sm btn-danger" type="submit">Xóa</button>
+                                </form>
+                            </th>
                         </tr>
                     }
                 </tbody>

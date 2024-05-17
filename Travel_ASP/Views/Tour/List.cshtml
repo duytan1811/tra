@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewData["Title"] = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var tours = ViewData["Tours"] as List<Tour>;
+}
+
+<section class="tour-one tour-grid">
+        <div class="container">
+            <div class="tour-sorter-one">
+            <h3>Tìm thấy @tours.Count tour du lịch</h3>
+                <div class="tour-sorter-one__right">
+                    <div class="tour-sorter-one__select">
+                        <select name="sort-by" onchange="orderBy(this)" id="sort-by" class="selectpicker">
+                            <option value="">Sắp Xếp</option>
+                            <option value="1">Tên A-Z</option>
+                            <option value="2">Tên Z-A</option>
+                            <option value="3">Giá Tăng Dần</option>
+                            <option value="4">Giá Giảm Dần</option>
+                        </select>
+                    </div>
+                    <a href="{!! route('tours.get_all_tour_sidebar') !!}"><i class="tripo-icon-list-menu"></i></a>
+                    <a asp-action="List" asp-controller="Tour" class="active"><i class="tripo-icon-squares"></i></a>
+                </div>
+
+            </div>
+            <div class="row">
+            @foreach (var tour in tours)
+            {
+                <div class="col-lg-4 col-md-6">
+                    <div class="tour-one__single">
+                        <div class="tour-one__image">
+                            <img src="/uploads/@tour.Image" alt="">
+
+                        </div>
+                        <div class="tour-one__content">
+
+                            <h3><a href="#">@tour.Name</a></h3>
+                            <p><span>@tour.Price</span></p>
+                            <ul class="tour-one__meta list-unstyled">
+                                <li>
+                                    <a href="{!! route('tours.detail',$tour->id) !!}">
+                                        <i class="far fa-clock"></i> @tour.DayCount
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{!! route('tours.detail',$tour->id) !!}">
+                                        <i class="far fa-user-circle"></i> @tour.MinPeople
+                                        - @tour.MaxPeople người
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{!! route('tours.detail',$tour->id) !!}">
+                                        <i class="far fa-map"></i> @tour.Province?.Name
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            }
+            </div>
+            @*@if($lstTour->lastPage()>1)
+                <div class="post-pagination">
+                    @if($lstTour->currentPage()>$lstTour->onFirstPage())
+                        <a href="{!! $lstTour->url($lstTour->currentPage()-1) !!}"><i class="fa fa-angle-left"></i></a>
+                    @endif
+                    @for($i=1;$i<=$lstTour->lastPage();$i++)
+                        <a class="{{ $i==$lstTour->currentPage()?'active':'' }}"
+                           href="{!! $lstTour->url($i) !!}">{{ $i }}</a>
+                    @endfor
+                    @if($lstTour->currentPage()<$lstTour->lastPage())
+                        <a href="{!! $lstTour->url($lstTour->currentPage()+1) !!}"><i class="fa fa-angle-right"></i></a>
+                    @endif
+                </div>
+            @endif*@
+        </div>
+    </section>
