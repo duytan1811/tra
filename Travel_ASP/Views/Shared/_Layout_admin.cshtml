@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <link rel="shortcut icon" href="{{ $app_site_logo }}">
+
+    <title>Travel</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="~/assets/admin/app.css">
+
+</head>
+
+<body class="light-sidebar-nav">
+
+    <section id="container">
+        <!--header start-->
+        @Html.Partial("_Header_Admin")
+        <!--header end-->
+        <!--sidebar start-->
+        @Html.Partial("_Sidebar")
+        <!--sidebar end-->
+        <!--main content start-->
+        <section id="main-content">
+            <section class="wrapper">
+               
+                @RenderBody()
+
+            </section>
+        </section>
+
+
+    </section>
+    <script src="~/assets/admin/app.js"></script>
+    
+    <script>
+        $(document).ready(function () {
+            $('.timepicker').timepicker();
+            $("#owl-demo").owlCarousel({
+                navigation: true,
+                slideSpeed: 300,
+                paginationSpeed: 400,
+                singleItem: true,
+                autoPlay: true
+
+            });
+        });
+
+        //custom select box
+
+        $(function () {
+            $('select.styled').customSelect();
+        });
+
+        $(window).on("resize", function () {
+            var owl = $("#owl-demo").data("owlCarousel");
+            owl.reinit();
+        });
+
+    </script>
+
+</body>
+</html>

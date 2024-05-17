@@ -1,0 +1,33 @@
+﻿<header class="header white-bg">
+    <div class="sidebar-toggle-box">
+        <i class="fa fa-bars"></i>
+    </div>
+    <a href="{!! route('admin.dashboard') !!}" class="logo">
+        <img src="{!! $app_logo !!}" alt="" height="40" width="90">
+    </a>
+    
+    <div class="top-nav ">
+        <ul class="nav pull-right top-menu">
+
+            <li class="dropdown">
+                <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                    <img alt="" height="29" width="29"
+                         src="{{ \Illuminate\Support\Facades\Auth::user()->avatarUrl() }}">
+                    <span class="username">Admin</span>
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu extended logout dropdown-menu-right">
+                    <div class="log-arrow-up"></div>
+                    <li><a href="{!! route('admin.profile') !!}"><i
+                                class=" fa fa-suitcase"></i>Tài khoản</a></li>
+                    <li><a href="{!! route('admin.settings.website') !!}"><i
+                                class="fa fa-cog"></i> Cài đặt</a></li>
+                    <li><a href="{!! route('admin.notifications.index') !!}"><i
+                                class="fa fa-bell-o"></i> Thông báo</a></li>
+                    <li><a href="{!! route('admin.logout') !!}"><i
+                                class="fa fa-key"></i>Đăng xuất</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</header>
