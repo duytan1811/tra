@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout_admin.cshtml";
+    var tours = ViewData["Tours"] as List<Tour>;
+}
+
+<div class="card">
+    <div class="card-body">
+        <a asp-action="CreateOrEdit" asp-controller="Tour" asp-route-param="null" class="btn btn-primary mb-3">Thêm tour</a>
+        <div class="adv-table table-responsive">
+            <table class="display table table-bordered table-striped data-table">
+                <thead class="bg-info text-white">
+                    <tr>
+                        <th>#</th>
+                        <th>Hình ảnh</th>
+                        <th>Tên</th>
+                        <th>Số người</th>
+                        <th>Ngày</th>
+                        <th>Địa chỉ</th>
+                        <th>Chức năng</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach(var tour in tours)
+                    {
+                        <tr>
+                            <th></th>
+                            <th>@tour.Image</th>
+                            <th>@tour.Name</th>
+                            <th>@tour.MinPeople - @tour.MaxPeople </th>
+                            <th>@tour.DayCount</th>
+                            <th>@tour.Province</th>
+                            <th></th>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,49 @@
+﻿<div class="site-header__header-one-wrap">
+    <div class="topbar-one">
+        <div class="container-fluid">
+            <div class="topbar-one__left">
+                <a href="mailto:travel@ISupportExternalScope.com">travel@ISupportExternalScope.com</a>
+                <a href="tel:+853433432"> +853433432</a>
+                <a href="http://maps.google.com/?q={{ $app_info['address'] ?? config('constants.DEFAULT.ADDRESS') }}" target="_blank">Tp. Hồ Chí Minh</a>
+            </div>
+            <div class="topbar-one__right">
+                <a href="@Url.Action("Index","Contact")" class="topbar-one__guide-btn">Liên hệ</a>
+            </div>
+        </div>
+    </div>
+    <header class="main-nav__header-one ">
+        <nav class="header-navigation stricky">
+            <div class="container">
+
+                <div class="main-nav__logo-box">
+                    <a href="@Url.Action("Index","Home")" class="main-nav__logo">
+                        <img src="~/assets/images/logo-dark.png" class="main-logo" width="123" alt="Travel" />
+                    </a>
+                    <a href="@Url.Action("Index","Home")" class="side-menu__toggler">
+                        <i class="fa fa-bars"></i>
+                    </a>
+                </div>
+                <div class="main-nav__main-navigation">
+                    <ul class=" main-nav__navigation-box">
+                        <li>
+                            <a href="@Url.Action("Index","Home")">Trang chủ</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index","Tour")">Tour du lịch</a>
+                        </li>
+                        <li>
+                            <a href="#">Đánh giá</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index","Blog")">Bài viết</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index","Contact")">Liên hệ</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
+    </header>
+</div>

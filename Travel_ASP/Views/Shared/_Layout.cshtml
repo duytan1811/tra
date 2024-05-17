@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Travel</title>
+
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ $app_site_logo?? config('constants.DEFAULT.SITE_LOGO">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ $app_site_logo  ?? config('constants.DEFAULT.SITE_LOGO')}}">
+    <link rel="manifest" href="~/assets/images/favicons/site.webmanifest">
+
+    <!-- plugin scripts -->
+
+
+    <link href="https://fonts.googleapis.com/css?family=Barlow+Condensed:200,300,400,400i,500,600,700,800,900%7CSatisfy&display=swap" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="~/assets/css/animate.min.css">
+    <link rel="stylesheet" href="~/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/assets/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="~/assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/assets/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="~/assets/css/swiper.min.css">
+    <link rel="stylesheet" href="~/assets/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="~/assets/css/tripo-icons.css">
+    <link rel="stylesheet" href="~/assets/css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="~/assets/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="~/assets/css/vegas.min.css">
+    <link rel="stylesheet" href="~/assets/css/nouislider.min.css">
+    <link rel="stylesheet" href="~/assets/css/nouislider.pips.css">
+
+    <!-- template styles -->
+    <link rel="stylesheet" href="~/assets/css/style.css">
+    <link rel="stylesheet" href="~/assets/css/responsive.css">
+</head>
+
+<body>
+    <div class="preloader">
+        <img src="~/assets/images/loader.png" class="preloader__image" alt="">
+    </div><!-- /.preloader -->
+    <div class="page-wrapper">
+        @Html.Partial("_Header")
+
+        @RenderBody()
+
+        @Html.Partial("_Footer")
+
+    </div><!-- /.page-wrapper -->
+
+
+    <a href="#" data-target="html" class="scroll-to-target scroll-to-top"><i class="fa fa-angle-up"></i></a>
+
+
+    <div class="side-menu__block">
+
+
+        <div class="side-menu__block-overlay custom-cursor__overlay">
+            <div class="cursor"></div>
+            <div class="cursor-follower"></div>
+        </div><!-- /.side-menu__block-overlay -->
+        <div class="side-menu__block-inner ">
+            <div class="side-menu__top justify-content-end">
+
+                <a href="#" class="side-menu__toggler side-menu__close-btn"><img src="~/assets/images/shapes/close-1-1.png" alt=""></a>
+            </div>
+
+            <nav class="mobile-nav__container">
+            </nav>
+            <div class="side-menu__sep"></div>
+            <div class="side-menu__content">
+                <p>
+                    <a href="mailto:{{ $app_info['email'] ?? config('constants.DEFAULT.EMAIL">{{ $app_info['email'] ?? config('constants.DEFAULT.EMAIL</a>
+                    <br>
+                    <a href="tel:{{ $app_info['phone'] ?? config('constants.DEFAULT.PHONE">{{ $app_info['phone'] ?? config('constants.DEFAULT.PHONE</a>
+                </p>
+                <div class="side-menu__social">
+                    <a href="#"><i class="fab fa-facebook-square"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/assets/js/jquery.min.js"></script>
+    <script src="~/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="~/assets/js/owl.carousel.min.js"></script>
+    <script src="~/assets/js/waypoints.min.js"></script>
+    <script src="~/assets/js/jquery.counterup.min.js"></script>
+    <script src="~/assets/js/TweenMax.min.js"></script>
+    <script src="~/assets/js/wow.js"></script>
+    <script src="~/assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="~/assets/js/jquery.ajaxchimp.min.js"></script>
+    <script src="~/assets/js/swiper.min.js"></script>
+    <script src="~/assets/js/typed-2.0.11.js"></script>
+    <script src="~/assets/js/vegas.min.js"></script>
+    <script src="~/assets/js/jquery.validate.min.js"></script>
+    <script src="~/assets/js/bootstrap-select.min.js"></script>
+    <script src="~/assets/js/countdown.min.js"></script>
+    <script src="~/assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="~/assets/js/bootstrap-datepicker.min.js"></script>
+    <script src="~/assets/js/nouislider.min.js"></script>
+    <script src="~/assets/js/isotope.js"></script>
+
+    <!-- template scripts -->
+    <script src="~/assets/js/theme.js"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+
+</html>
+
