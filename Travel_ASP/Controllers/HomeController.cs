@@ -1,7 +1,6 @@
-﻿using System.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using STM.DataAccess.Contexts;
-using Travel_ASP.Models;
+using Travel_ASP.ViewModels;
 
 namespace Travel_ASP.Controllers;
 
@@ -26,17 +25,21 @@ public class HomeController : Controller
 
         var provinces = _db.Provinces.ToList();
         ViewData["Provinces"] = provinces;
+
+        var defaultImage = _db.Configurations.FirstOrDefault(x => x.Key == "defaultTourImage");
+        foreach (var tour in popTours)
+        {
+            if (string.IsNullOrEmpty(tour.Image))
+            {
+                tour.Image = defaultImage.Value;
+            }
+        }
         return View();
     }
 
-    public IActionResult Privacy()
+    [HttpPost("search")]
+    public IActionResult Search(SearchViewModel dto)
     {
-        return View();
-    }
-
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
-    {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        return RedirectToAction("List","Tour",dto);
     }
 }

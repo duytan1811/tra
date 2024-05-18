@@ -42,6 +42,16 @@ namespace Travel_ASP.Controllers
         [HttpGet("contact")]
         public IActionResult Contact()
         {
+            var settingApp = _db.Configurations.FirstOrDefault(x => x.Key == "appName");
+            var settingEmail = _db.Configurations.FirstOrDefault(x => x.Key == "email");
+            var settingPhone = _db.Configurations.FirstOrDefault(x => x.Key == "phone");
+            var data = new SettingViewModel()
+            {
+                AppName = settingApp.Value,
+                Email = settingEmail.Value,
+                Phone = settingPhone.Value,
+            };
+            ViewData["Setting"] = data;
             return View();
         }
 

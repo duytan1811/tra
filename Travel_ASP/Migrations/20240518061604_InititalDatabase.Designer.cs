@@ -12,7 +12,7 @@ using STM.DataAccess.Contexts;
 namespace Travel_ASP.Migrations
 {
     [DbContext(typeof(TravelDbContext))]
-    [Migration("20240518054158_InititalDatabase")]
+    [Migration("20240518061604_InititalDatabase")]
     partial class InititalDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -88,7 +88,39 @@ namespace Travel_ASP.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Configuration");
+                    b.ToTable("Configurations");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("dae5400a-54d2-4568-8566-6e89c6dc9f87"),
+                            Key = "appName",
+                            Value = ""
+                        },
+                        new
+                        {
+                            Id = new Guid("01280e36-02e6-4663-823e-5e14e287bede"),
+                            Key = "phone",
+                            Value = ""
+                        },
+                        new
+                        {
+                            Id = new Guid("b8d91fab-5b62-41ef-aacb-19791db98739"),
+                            Key = "email",
+                            Value = ""
+                        },
+                        new
+                        {
+                            Id = new Guid("11d9a927-1770-439e-9daf-095a66d1d7b3"),
+                            Key = "defaultTourImage",
+                            Value = ""
+                        },
+                        new
+                        {
+                            Id = new Guid("5e77b941-2315-477e-a05a-69679da70afc"),
+                            Key = "defaultBlogImage",
+                            Value = ""
+                        });
                 });
 
             modelBuilder.Entity("Travel_ASP.Models.Contact", b =>
@@ -172,317 +204,317 @@ namespace Travel_ASP.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("0bdecaac-5fd7-4f38-ba2b-aa35195fd68b"),
+                            Id = new Guid("5098c722-7a8f-4be0-a266-1980593f060d"),
                             Name = "An Giang"
                         },
                         new
                         {
-                            Id = new Guid("4d2bf356-7059-47b2-b294-f23c19cb420c"),
+                            Id = new Guid("b81f8a3f-6e0a-439c-81ea-31c38f41a554"),
                             Name = "Bà Rịa – Vũng Tàu"
                         },
                         new
                         {
-                            Id = new Guid("134ba0e9-2597-4529-83da-864d7781a00a"),
+                            Id = new Guid("ece5d94b-66e1-45be-bcdb-2f64b8aa48d4"),
                             Name = "Bắc Giang"
                         },
                         new
                         {
-                            Id = new Guid("6955728d-4617-490e-94b0-4a6168d098f7"),
+                            Id = new Guid("61fd92f9-653a-42df-8e0d-861acf1e064e"),
                             Name = "Bắc Kạn"
                         },
                         new
                         {
-                            Id = new Guid("39d159aa-7687-4474-ac6b-696b16b6fa26"),
+                            Id = new Guid("da4d3994-f416-4746-a994-65fb2cfedfd8"),
                             Name = "Bạc Liêu"
                         },
                         new
                         {
-                            Id = new Guid("41a462fc-6765-48c7-9960-61bd3321e605"),
+                            Id = new Guid("ea50ceec-b4c2-4075-b388-2fdb4bb262e6"),
                             Name = "Bắc Ninh"
                         },
                         new
                         {
-                            Id = new Guid("cd96c0c5-b5b5-4c4f-a6ea-df26e082006d"),
+                            Id = new Guid("71b348cc-90b2-49fa-afee-d929f9695c93"),
                             Name = "Bến Tre"
                         },
                         new
                         {
-                            Id = new Guid("c25bf13d-d945-4a8d-b00a-5fbd93d66da4"),
+                            Id = new Guid("0049f9c7-aa39-4b87-886b-0e5ac0ff5342"),
                             Name = "Bình Định"
                         },
                         new
                         {
-                            Id = new Guid("2aa02668-f130-4acd-98ff-f990b2c23e64"),
+                            Id = new Guid("3be2834f-d469-4656-a354-f0981414b78d"),
                             Name = "Bình Dương"
                         },
                         new
                         {
-                            Id = new Guid("b336704d-de8e-4fc2-81a2-63874dc4d7f6"),
+                            Id = new Guid("bfad7a5b-7c65-4104-951d-184bd26760f1"),
                             Name = "Bình Phước"
                         },
                         new
                         {
-                            Id = new Guid("6210ab8f-9dcf-41ec-b602-a436b6557108"),
+                            Id = new Guid("4aa677a3-ac6d-4225-a3d7-e3174136fbc8"),
                             Name = "Bình Thuận"
                         },
                         new
                         {
-                            Id = new Guid("f6014ece-0c0d-4591-97a6-72a578ba3e2f"),
+                            Id = new Guid("3178fe83-f1da-458f-9caa-cb06fcc3710c"),
                             Name = "Cà Mau"
                         },
                         new
                         {
-                            Id = new Guid("3f61caa6-3a94-4775-9ce3-4e7d2a8ab8dc"),
+                            Id = new Guid("9c05d561-d439-4ddd-a347-dbe22f56f80c"),
                             Name = "Cần Thơ"
                         },
                         new
                         {
-                            Id = new Guid("4779ad58-60b8-4489-8322-d2911f52c8e3"),
+                            Id = new Guid("d9bd3cc1-fe39-47ae-ac9b-4471fccb9241"),
                             Name = "Cao Bằng"
                         },
                         new
                         {
-                            Id = new Guid("761cdbf4-04d3-41eb-8e88-0e8e5cff26a4"),
+                            Id = new Guid("f81e06ee-36eb-4d29-83fe-7d11dc91536b"),
                             Name = "Đà Nẵng"
                         },
                         new
                         {
-                            Id = new Guid("9d5121db-cd1f-47b9-b695-4b2e2732bcc4"),
+                            Id = new Guid("0850c75d-963b-4d86-885a-5efdb7ce3553"),
                             Name = "Đắk Lắk"
                         },
                         new
                         {
-                            Id = new Guid("8cdfce53-c5a2-40ac-8f73-8a410f2116ef"),
+                            Id = new Guid("9f058b4e-db77-49d0-abb2-0f83deb6d9a0"),
                             Name = "Đắk Nông"
                         },
                         new
                         {
-                            Id = new Guid("3d986242-b7e9-47b3-977c-e162066f5b24"),
+                            Id = new Guid("6974ced2-6557-49d8-8500-1c1dd67c7723"),
                             Name = "Điện Biên"
                         },
                         new
                         {
-                            Id = new Guid("a961ea42-d45c-477a-bd95-61eab87eb446"),
+                            Id = new Guid("95c2946f-4f20-4614-88dc-1123935fa6a4"),
                             Name = "Đồng Nai"
                         },
                         new
                         {
-                            Id = new Guid("82ae4ab7-d6df-415d-8f4c-02c797d02881"),
+                            Id = new Guid("5dbf9ce3-23a2-43f1-9a73-acd466be1bc3"),
                             Name = "Đồng Tháp"
                         },
                         new
                         {
-                            Id = new Guid("71237b07-53e4-44a9-b47c-a12c23d469b7"),
+                            Id = new Guid("482739cb-06cc-4b5e-8c87-2a0027e1af3b"),
                             Name = "Gia Lai"
                         },
                         new
                         {
-                            Id = new Guid("039cf527-306e-4369-8640-08504d382ac7"),
+                            Id = new Guid("4ae12f71-ba21-41fd-a6d8-66cd3f633748"),
                             Name = "Hà Giang"
                         },
                         new
                         {
-                            Id = new Guid("6b6bfd6b-ccf9-48fd-8620-77a4229cd117"),
+                            Id = new Guid("9b8193ee-b69c-4c76-b8d1-b97942af268e"),
                             Name = "Hà Nam"
                         },
                         new
                         {
-                            Id = new Guid("66e49ce5-ee2b-4e0e-baa8-b14c0b74a694"),
+                            Id = new Guid("7fb45860-256e-4045-bc14-fd8c550e7206"),
                             Name = "Hà Nội"
                         },
                         new
                         {
-                            Id = new Guid("512c13a3-5d8c-477c-bf00-2e05a26a47a4"),
+                            Id = new Guid("e109d927-710e-49a0-8ae4-52c2f57b2064"),
                             Name = "Hà Tĩnh"
                         },
                         new
                         {
-                            Id = new Guid("eed2fa62-1ba4-43f6-9531-c765a0ec4a23"),
+                            Id = new Guid("e317318f-547d-46e7-b077-476d97d0735e"),
                             Name = "Hải Dương"
                         },
                         new
                         {
-                            Id = new Guid("2b036964-9ba5-4306-82f2-67aa9d97557e"),
+                            Id = new Guid("39e8bf36-6628-4aa0-8ada-b2930eff3000"),
                             Name = "Hải Phòng"
                         },
                         new
                         {
-                            Id = new Guid("dafbe1dc-33ad-4a1c-a8ce-cb8841ae2d0b"),
+                            Id = new Guid("5b784652-5ed6-4773-bb19-f7fce97a61c8"),
                             Name = "Hậu Giang"
                         },
                         new
                         {
-                            Id = new Guid("e505e3cb-86c9-4c20-9a35-9916413864e6"),
+                            Id = new Guid("bb843c76-d840-4fe6-ad91-0f0b947ab23a"),
                             Name = "Hòa Bình"
                         },
                         new
                         {
-                            Id = new Guid("6d70269f-2a3f-4c3c-9af9-ca55b7dc8164"),
+                            Id = new Guid("67b952a7-18d6-4241-a21e-16b151328b7b"),
                             Name = "Hưng Yên"
                         },
                         new
                         {
-                            Id = new Guid("7f94a2f6-3be8-4bc7-8c8a-ef4b2370e58f"),
+                            Id = new Guid("6a996415-fee7-4410-b675-1732583a6704"),
                             Name = "Khánh Hòa"
                         },
                         new
                         {
-                            Id = new Guid("2967b277-b26c-4013-a509-7edf3c19f971"),
+                            Id = new Guid("5add419a-f809-47ae-b8d9-80edce9dc41e"),
                             Name = "Kiên Giang"
                         },
                         new
                         {
-                            Id = new Guid("08d2bee7-9d2c-486d-82f4-6bc8423c2077"),
+                            Id = new Guid("c3aa0c9d-d274-4bea-b1f3-1e3d505c32f7"),
                             Name = "Kon Tum"
                         },
                         new
                         {
-                            Id = new Guid("cea49dd0-d461-4e4a-9b23-0e6d1d1c90cb"),
+                            Id = new Guid("d36dc3c9-4752-434f-87d7-4b0a7b95c955"),
                             Name = "Lai Châu"
                         },
                         new
                         {
-                            Id = new Guid("ae298568-f495-4642-822a-f34b95c6cfbf"),
+                            Id = new Guid("938e3890-2ba4-46e7-b4b4-532a8c729cf9"),
                             Name = "Lâm Đồng"
                         },
                         new
                         {
-                            Id = new Guid("75d4e201-9245-436b-9bf5-88cd8fd47ecb"),
+                            Id = new Guid("84eec50a-b9f1-4daf-b54b-8caa1adc2357"),
                             Name = "Lạng Sơn"
                         },
                         new
                         {
-                            Id = new Guid("1b8032f8-af80-4951-bedf-b777e25a991c"),
+                            Id = new Guid("e1ec1a9a-f469-423f-970f-f9139008a378"),
                             Name = "Lào Cai"
                         },
                         new
                         {
-                            Id = new Guid("2c6efbbc-9766-4aed-a6e3-4e6f67049863"),
+                            Id = new Guid("07482a9f-9385-48b9-8f8d-40e3abb54b0a"),
                             Name = "Long An"
                         },
                         new
                         {
-                            Id = new Guid("1d7c4373-f4ed-4504-aa63-52c72ea07ede"),
+                            Id = new Guid("0ecef50e-c372-4ce8-a3d4-9e0b81bd8e24"),
                             Name = "Nam Định"
                         },
                         new
                         {
-                            Id = new Guid("2992c601-6e8d-49ec-8542-3e4538ffa635"),
+                            Id = new Guid("14884c7b-30e9-487c-8a92-e9bb539e69dd"),
                             Name = "Nghệ An"
                         },
                         new
                         {
-                            Id = new Guid("798ba8ba-4542-4426-a35e-d998cb535627"),
+                            Id = new Guid("83741c05-d0db-4c65-978c-5ac853c6e9f4"),
                             Name = "Ninh Bình"
                         },
                         new
                         {
-                            Id = new Guid("bf3f26f2-9c6e-4b50-bfcf-b749e3170b66"),
+                            Id = new Guid("87c60cdf-06ad-433c-9b6f-105a07a57508"),
                             Name = "Ninh Thuận"
                         },
                         new
                         {
-                            Id = new Guid("4e817918-fb84-424e-b811-669ebca394f1"),
+                            Id = new Guid("09fa3865-4cc7-4c0f-8ffd-654de8dea2d9"),
                             Name = "Phú Thọ"
                         },
                         new
                         {
-                            Id = new Guid("5dce9cfe-8113-4a2c-b033-aae4881479ee"),
+                            Id = new Guid("2bc4da99-1191-4c15-b966-74e1e8bd5ff2"),
                             Name = "Phú Yên"
                         },
                         new
                         {
-                            Id = new Guid("5501562b-6d28-411a-a01a-a5c69055817a"),
+                            Id = new Guid("63d4a117-5bcd-4d5f-a412-c48130971aaf"),
                             Name = "Quảng Bình"
                         },
                         new
                         {
-                            Id = new Guid("8872ff78-003b-4d35-88f8-fdad16f50e7e"),
+                            Id = new Guid("a4809a85-4e23-48e6-af79-18f711f91933"),
                             Name = "Quảng Nam"
                         },
                         new
                         {
-                            Id = new Guid("4ca81b47-9630-4457-b357-8826e2f9a277"),
+                            Id = new Guid("2ae69a2a-7cbb-493f-954c-f884ec829656"),
                             Name = "Quảng Ngãi"
                         },
                         new
                         {
-                            Id = new Guid("537e3b5c-058e-42aa-a95a-c70f2fb0fd57"),
+                            Id = new Guid("3e69ed6f-8c20-4936-98db-52b07621ac59"),
                             Name = "Quảng Ninh"
                         },
                         new
                         {
-                            Id = new Guid("f97e2dc3-c722-4081-af7b-4870b27fea09"),
+                            Id = new Guid("694ba9ec-bd31-403e-bfe0-2de5a2b537c2"),
                             Name = "Quảng Trị"
                         },
                         new
                         {
-                            Id = new Guid("5c88a8ea-47ce-4774-9946-1193b8e0ceea"),
+                            Id = new Guid("0e888f9c-4cec-4c4e-9318-80bbf130b501"),
                             Name = "Sóc Trăng"
                         },
                         new
                         {
-                            Id = new Guid("da9f8b07-a589-44f8-9cee-82f72d4c58aa"),
+                            Id = new Guid("76f6a11f-dcc0-4496-9969-7fae593d900c"),
                             Name = "Sơn La"
                         },
                         new
                         {
-                            Id = new Guid("ee735289-80b2-4363-a8c6-48ce26d9fcb9"),
+                            Id = new Guid("62539ba1-53ba-41e1-b54f-a09fffd18d3a"),
                             Name = "Tây Ninh"
                         },
                         new
                         {
-                            Id = new Guid("aa047c69-9d73-472b-9099-011837e81cc5"),
+                            Id = new Guid("480739d3-559b-4945-9a4a-f4b320bf742c"),
                             Name = "Thái Bình"
                         },
                         new
                         {
-                            Id = new Guid("e44a09c3-e8fe-49a1-a911-eaa76866a7de"),
+                            Id = new Guid("01bfe577-4b91-40b7-a580-cf200362d243"),
                             Name = "Thái Nguyên"
                         },
                         new
                         {
-                            Id = new Guid("25d93433-8351-448e-9648-0be1102f6dcd"),
+                            Id = new Guid("21268bac-5f6f-4240-8a2d-6fd0a15c319c"),
                             Name = "Thanh Hóa"
                         },
                         new
                         {
-                            Id = new Guid("d6769a3a-f5a2-43f3-b638-4ceddecbf95b"),
+                            Id = new Guid("51c47de0-06af-42d5-9258-07ff826dfe8f"),
                             Name = "Thừa Thiên Huế"
                         },
                         new
                         {
-                            Id = new Guid("7b834cae-c157-40a9-8b1f-a06fd32576ac"),
+                            Id = new Guid("c64d6812-e660-4de4-b9ed-bd339ab758a8"),
                             Name = "Tiền Giang"
                         },
                         new
                         {
-                            Id = new Guid("1b7d00ba-3141-4b33-9718-d061f1174a8a"),
+                            Id = new Guid("7c6bd094-b67f-4462-898f-e5b6ea08f313"),
                             Name = "Thành phố Hồ Chí Minh"
                         },
                         new
                         {
-                            Id = new Guid("08783d32-7d9a-46d0-8671-cc7000304e18"),
+                            Id = new Guid("73a948cc-fd6f-4dd9-9c79-346977cea1c2"),
                             Name = "Trà Vinh"
                         },
                         new
                         {
-                            Id = new Guid("64230471-875b-41ea-878e-4e492c17ca32"),
+                            Id = new Guid("9893a16e-b753-492f-b99a-5802000ddafb"),
                             Name = "Tuyên Quang"
                         },
                         new
                         {
-                            Id = new Guid("36741948-1ab3-4cbf-b36f-3662ea0bb756"),
+                            Id = new Guid("2207dfcf-efef-4f9d-af9f-1a8d91a79041"),
                             Name = "Vĩnh Long"
                         },
                         new
                         {
-                            Id = new Guid("c81aaa6b-eff6-4c20-a83a-46cfdde882d9"),
+                            Id = new Guid("fad19112-3f4a-4e53-949d-b9a1128ff168"),
                             Name = "Vĩnh Phúc"
                         },
                         new
                         {
-                            Id = new Guid("eb3d78a2-7a1f-424d-a417-41200526caa3"),
+                            Id = new Guid("cad9d75e-e333-4192-a6e2-b3bc61bbed48"),
                             Name = "Yên Bái"
                         });
                 });
@@ -698,7 +730,7 @@ namespace Travel_ASP.Migrations
                             LockoutEnabled = true,
                             Name = "Admin",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEOT3zsv+7u3OTITUOGUmEf0o59xBl8gTJxMUvGW8ePIE3eVhFQ3QrlFfIk6Ps3zV2A==",
+                            PasswordHash = "AQAAAAEAACcQAAAAED+SeOCagZl5GUfApy+o5Ne/mqFFBr5h9qlLZ98WSR8NOTMUH7qrRO3/dvl0F5hf5w==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "ZY5BGSWBARTE74T6ZLO7WKKMMILBEB2E",
                             TwoFactorEnabled = false,

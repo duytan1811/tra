@@ -18,6 +18,16 @@ namespace Travel_ASP.Controllers
         public IActionResult Index()
         {
             var blogs = _db.Blogs.ToList();
+
+            var defaultImage = _db.Configurations.FirstOrDefault(x => x.Key == "defaultBLogImage");
+
+            foreach (var blog in blogs)
+            {
+                if (string.IsNullOrEmpty(blog.Image))
+                {
+                    blog.Image = defaultImage.Value;
+                }
+            }
             ViewData["Blogs"] = blogs;
             return View();
         }
@@ -32,9 +42,11 @@ namespace Travel_ASP.Controllers
                 {
                     Id = x.Id,
                     Name = x.Name,
+                    Image = x.Image,
                     Description = x.Description,
                 }).FirstOrDefault();
             }
+            
             return View(blog);
         }
 
@@ -98,6 +110,14 @@ namespace Travel_ASP.Controllers
         public IActionResult List()
         {
             var blogs = _db.Blogs.ToList();
+            var defaultImage = _db.Configurations.FirstOrDefault(x => x.Key == "defaultBLogImage");
+            foreach (var blog in blogs)
+            {
+                if (string.IsNullOrEmpty(blog.Image))
+                {
+                    blog.Image = defaultImage.Value;
+                }
+            }
             ViewData["Blogs"] = blogs;
             return View();
         }
@@ -106,7 +126,21 @@ namespace Travel_ASP.Controllers
         public IActionResult BlogDetail(Guid id)
         {
             var blog = _db.Blogs.FirstOrDefault(x => x.Id == id);
-            var lastBlogs= _db.Blogs.Take(5).ToList();
+            var lastBlogs = _db.Blogs.Take(5).ToList();
+
+            var defaultImage = _db.Configurations.FirstOrDefault(x => x.Key == "defaultBLogImage");
+            if (string.IsNullOrEmpty(blog.Image))
+            {
+                blog.Image = defaultImage.Value;
+            }
+
+            foreach (var item in lastBlogs)
+            {
+                if (string.IsNullOrEmpty(item.Image))
+                {
+                    item.Image = defaultImage.Value;
+                }
+            }
             ViewData["LastBlogs"] = lastBlogs;
             return View(blog);
         }

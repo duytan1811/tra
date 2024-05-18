@@ -8,6 +8,26 @@
     {
         public void Configure(EntityTypeBuilder<Configuration> builder)
         {
+
+            var configKey = new List<string>
+            {
+                "appName",
+                "phone",
+                "email",
+                "defaultTourImage",
+                "defaultBlogImage"
+            };
+
+            foreach (var key in configKey)
+            {
+                builder.HasData(
+                    new Configuration()
+                    {
+                        Id = Guid.NewGuid(),
+                        Key = key,
+                        Value = ""
+                    });
+            }
         }
     }
 }

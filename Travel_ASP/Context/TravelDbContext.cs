@@ -53,6 +53,7 @@
             builder.ApplyConfiguration(new UserTokenConfiguration());
         }
 
+        public virtual DbSet<Configuration> Configurations { get; set; }
         public virtual DbSet<Tour> Tours { get; set; }
         public virtual DbSet<Blog> Blogs { get; set; }
         public virtual DbSet<Contact> Contacts { get; set; }

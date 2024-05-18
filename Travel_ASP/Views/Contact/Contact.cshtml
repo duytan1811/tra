@@ -1,8 +1,10 @@
-﻿
+﻿@using Travel_ASP.ViewModels;
+
 @{
     ViewData["Title"] = "Contact";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var messages = TempData["Message"] as string;
+    var settingViewMode = ViewData["Setting"] as SettingViewModel;
 }
 @model Travel_ASP.ViewModels.ContactViewModel
 
@@ -15,7 +17,7 @@
                         <i class="tripo-icon-placeholder"></i>
                     </div>
                     <div class="contact-info-one__content">
-                        <p>Địa chỉ</p>
+                        <p>@settingViewMode.AppName</p>
                     </div>
                 </div>
             </div>
@@ -26,7 +28,7 @@
                     </div>
                     <div class="contact-info-one__content">
                         <p>
-                            <a href="tel:{{ $app_info['phone'] ?? config('constants.DEFAULT.PHONE') }}">Số điện thoại</a>
+                            <a href="tel:@settingViewMode.Phone">@settingViewMode.Phone</a>
                         </p>
                     </div>
                 </div>
@@ -38,7 +40,7 @@
                     </div>
                     <div class="contact-info-one__content">
                         <p>
-                            <a href="mailto:{{ $app_info['email'] ?? config('constants.DEFAULT.EMAIL') }}">Email</a>
+                            <a href="mailto:@settingViewMode.Email">@settingViewMode.Email</a>
                         </p>
                     </div>
                 </div>
