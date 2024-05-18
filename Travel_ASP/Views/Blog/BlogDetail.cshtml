@@ -1,0 +1,57 @@
+﻿@using System.Globalization;
+
+@{
+    ViewData["Title"] = "TourDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var lastedBlogs = ViewData["LastBlogs"] as List<Blog>;
+}
+@model Blog
+
+<section class="blog-list">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="blog-details__image">
+                    <img src="/uploads/@Model.Image" alt="" class="img-fluid" height="497" width="770">
+                </div>
+                <div class="blog-details__content">
+                    <ul class="list-unstyled blog-one__meta">
+                        <li>
+                            <a asp-action="BlogDetail" asp-controller="Blog" asp-route-id="@Model.Id">
+                                <i class="far fa-user-circle"></i> Admin
+                            </a>
+                        </li>
+                        <li>
+                            <a asp-action="BlogDetail" asp-controller="Blog" asp-route-id="@Model.Id">
+                                <i class="far fa-clock"></i> @Model.CreatedAt.Value.ToString("dd/MM/yyyy")
+                            </a>
+                        </li>
+                    </ul>
+                    <h3>@Model.Name</h3>
+                    <br>
+                    <p>@Model.Description</p>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="sidebar">
+                    <div class="sidebar__single sidebar__post">
+                        <h3 class="sidebar__title">Bài Viết Nổi Bật</h3>
+                        <ul class="sidebar__post-list list-unstyled">
+                            @foreach (var lastedBlog in lastedBlogs)
+                            {
+                                <li>
+                                    <div class="sidebar__post-image">
+                                        <img src="/uploads/@lastedBlog.Image" alt="">
+                                    </div>
+                                    <div class="sidebar__post-content">
+                                        <h3><a asp-action="BlogDetail" asp-controller="Blog" asp-route-id="@lastedBlog.Id">@lastedBlog.Name</a></h3>
+                                    </div>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

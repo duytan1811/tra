@@ -3,44 +3,50 @@
 @{
     ViewData["Title"] = "CreateOrEdit";
     Layout = "~/Views/Shared/_Layout_admin.cshtml";
-    var tour = ViewData["Tour"] as TourViewModel;
+    var provinces = ViewData["Provinces"] as List<Province>;
 }
 @model Travel_ASP.ViewModels.TourViewModel
 
 <div class="card">
     <form asp-action="Save" asp-controller="Tour" method="POST" enctype="multipart/form-data">
-        <input type="hidden" asp-for="Id" value="@tour.Id" class="form-control" />
+        <input type="hidden" asp-for="Id" class="form-control" />
         <div class="card-body">
             <div class="row">
                 <div class="col-md-6">
                     <label>Tên</label> <span class="text-danger">*</span>
-                    <input type="text" asp-for="Name" value="@tour.Name" class="form-control" />
+                    <input type="text" asp-for="Name" class="form-control" />
                 </div>
                 <div class="col-md-6">
-                    <label>Số người </label><span class="text-danger">*</span>
-                    <input type="text" asp-for="Price" value="@tour.Price" class="form-control" />
+                    <label>Giá tiền </label><span class="text-danger">*</span>
+                    <input type="number" asp-for="Price" class="form-control" />
                 </div>
             </div>
 
             <div class="row mt-3">
                 <div class="col-md-6">
                     <label>Số người tối thiểu </label><span class="text-danger">*</span>
-                    <input type="text" asp-for="MinPeople" value="@tour.MinPeople" class="form-control" />
+                    <input type="number" asp-for="MinPeople"  class="form-control" />
                 </div>
                 <div class="col-md-6">
                     <label>Số người tối đa </label><span class="text-danger">*</span>
-                    <input type="text" asp-for="MaxPeople" value="@tour.MaxPeople" class="form-control" />
+                    <input type="number" asp-for="MaxPeople" class="form-control" />
                 </div>
             </div>
 
             <div class="row  mt-3">
                 <div class="col-md-6">
                     <label>Số ngày </label><span class="text-danger">*</span>
-                    <input type="text" asp-for="DayCount" value="@tour.DayCount" class="form-control" />
+                    <input type="number" asp-for="DayCount"  class="form-control" />
                 </div>
                 <div class="col-md-6">
                     <label>Địa chỉ</label><span class="text-danger">*</span>
-                    <input type="text" asp-for="ProvinceId" value="@tour.ProvinceId" class="form-control" />
+
+                    <select asp-for="ProvinceId" class="form-control">
+                        @foreach (var province in provinces)
+                        {
+                            <option value="@province.Id">@province.Name</option>
+                        }
+                    </select>
                 </div>
             </div>
 
@@ -54,13 +60,13 @@
             <div class="row  mt-3">
                 <div class="col-md-12">
                     <label>Tóm tắt </label>
-                    <input type="text" asp-for="Description" value="@tour.Description" class="form-control" />
+                    <input type="text" asp-for="Description"  class="form-control" />
                 </div>
             </div>
             <div class="row  mt-3">
                 <div class="col-md-12">
                     <label>Nội dung</label>
-                    <textarea asp-for="Detail" rows="10" class="form-control">@tour.Detail</textarea>
+                    <textarea asp-for="Detail" rows="10" class="form-control"></textarea>
                 </div>
             </div>
 

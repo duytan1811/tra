@@ -1,6 +1,4 @@
-﻿using Humanizer;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
+﻿using Microsoft.AspNetCore.Mvc;
 using STM.DataAccess.Contexts;
 using Travel_ASP.Models;
 using Travel_ASP.ViewModels;
@@ -45,8 +43,9 @@ namespace Travel_ASP.Controllers
                     Discount = x.Discount,
                 }).FirstOrDefault();
             }
-            ViewData["Tour"] = tour;
-            return View();
+            var provinces= _db.Provinces.ToList();
+            ViewData["Provinces"] = provinces;
+            return View(tour);
         }
 
         [HttpPost("admin/tours/save")]
@@ -100,6 +99,7 @@ namespace Travel_ASP.Controllers
                     ProvinceId = dto.ProvinceId,
                     Discount = dto.Discount,
                     Image = fileName,
+                    CreatedAt = DateTime.Now,
                 };
                 _db.Tours.Add(tourData);
                 _db.SaveChanges();
@@ -128,7 +128,7 @@ namespace Travel_ASP.Controllers
         [HttpGet("tours/list/{id}")]
         public IActionResult TourDetail(Guid id)
         {
-            var tour = _db.Tours.FirstOrDefault(x=>x.Id == id);
+            var tour = _db.Tours.FirstOrDefault(x => x.Id == id);
             ViewData["Tour"] = tour;
             return View();
         }

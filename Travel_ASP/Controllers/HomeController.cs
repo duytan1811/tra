@@ -20,6 +20,12 @@ public class HomeController : Controller
     {
         var popTours= _db.Tours.Take(3).ToList();
         ViewData["PopTours"] = popTours;
+
+        var popBlogs = _db.Blogs.Take(3).ToList();
+        ViewData["PopBlogs"] = popBlogs;
+
+        var provinces = _db.Provinces.ToList();
+        ViewData["Provinces"] = provinces;
         return View();
     }
 

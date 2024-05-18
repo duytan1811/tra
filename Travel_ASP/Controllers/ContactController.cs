@@ -56,6 +56,7 @@ namespace Travel_ASP.Controllers
                 FullName = dto.FullName,
                 Phone = dto.Phone,
                 Subject = dto.Subject,
+                CreatedAt = DateTime.Now,
             };
 
             _db.Contacts.Add(newContact);

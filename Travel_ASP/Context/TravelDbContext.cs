@@ -56,5 +56,6 @@
         public virtual DbSet<Tour> Tours { get; set; }
         public virtual DbSet<Blog> Blogs { get; set; }
         public virtual DbSet<Contact> Contacts { get; set; }
+        public virtual DbSet<Province> Provinces { get; set; }
     }
 }

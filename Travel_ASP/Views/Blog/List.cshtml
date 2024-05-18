@@ -1,0 +1,55 @@
+﻿@using System.Globalization;
+
+@{
+    ViewData["Title"] = "Danh sách bài viết";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var blogs = ViewData["Blogs"] as List<Blog>;
+}
+<section class="blog-one blog-one__grid">
+    <div class="container">
+        <div class="row">
+            @if (blogs != null)
+            {
+                @foreach (var blog in blogs)
+                {
+                    <div class="col-lg-4 col-md-6">
+                        <div class="blog-one__single">
+                            <div class="blog-one__image">
+                                <img src="/uploads/@blog.Image" alt="">
+                                <a asp-action="BlogDetail" asp-controller="Blog" asp-route-id="@blog.Id">
+                                    <i class="fa fa-long-arrow-alt-right"></i>
+                                </a>
+                            </div>
+                            <div class="blog-one__content">
+                                <ul class="list-unstyled blog-one__meta">
+                                    <li>
+                                        <a asp-action="BlogDetail" asp-controller="Blog" asp-route-id="@blog.Id">
+                                            <i class="far fa-user-circle"></i> Admin
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a asp-action="BlogDetail" asp-controller="Blog" asp-route-id="@blog.Id">
+                                            <i class="far fa-clock"></i> @blog.CreatedAt.Value.ToString("dd/MM/yyyy")
+                                        </a>
+                                    </li>
+                                </ul>
+                                <h3><a asp-action="BlogDetail" asp-controller="Blog" asp-route-id="@blog.Id">@blog.Name</a></h3>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="col-lg-12 col-md-12 text-center">
+                    <h3>Hiện tại chưa có nội dung</h3>
+                    <br>
+                    <a asp-action="Index" asp-controller="Home" class="btn btn-danger text-light">
+                        <i class="fa fa-arrow-left"></i>
+                        Quay lại trang chủ
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+</section>

@@ -10,18 +10,6 @@
     <div class="container">
         <div class="tour-sorter-one">
             <h3>Tìm thấy @tours.Count tour du lịch</h3>
-            <div class="tour-sorter-one__right">
-                <div class="tour-sorter-one__select">
-                    <select name="sort-by" onchange="orderBy(this)" id="sort-by" class="selectpicker">
-                        <option value="">Sắp Xếp</option>
-                        <option value="1">Tên A-Z</option>
-                        <option value="2">Tên Z-A</option>
-                        <option value="3">Giá Tăng Dần</option>
-                        <option value="4">Giá Giảm Dần</option>
-                    </select>
-                </div>
-            </div>
-
         </div>
         <div class="row">
             @foreach (var tour in tours)
@@ -29,8 +17,7 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="tour-one__single">
                         <div class="tour-one__image">
-                            <img src="/uploads/@tour.Image" alt="">
-
+                            <img src="/uploads/@tour.Image" height="330px" alt="">
                         </div>
                         <div class="tour-one__content">
 
