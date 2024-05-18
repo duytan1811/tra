@@ -2,3 +2,6 @@
 .vs/
 Travel_ASP/bin/
 Travel_ASP/obj/
+Travel_ASP/.config/dotnet-tools.json
+Travel_ASP/Properties/PublishProfiles/FolderProfile.pubxml
+Travel_ASP/Properties/PublishProfiles/FolderProfile.pubxml.user

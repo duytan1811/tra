@@ -145,7 +145,7 @@ namespace Travel_ASP.Controllers
                 }
                 else
                 {
-                    query = query.Where(x => x.DayCount > 3);
+                    query = query.Where(x => x.DayCount >= 3);
                 }
             }
             if (dto.PeopleCount.HasValue)
@@ -156,7 +156,7 @@ namespace Travel_ASP.Controllers
                 }
                 else if (dto.PeopleCount == 2)
                 {
-                    query = query.Where(x => x.MaxPeople <= 8 && x.MinPeople >= 3);
+                    query = query.Where(x => (x.MaxPeople <= 8 && x.MinPeople >= 3) || x.MaxPeople >= 3);
                 }
                 else if (dto.PeopleCount == 3)
                 {
