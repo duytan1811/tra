@@ -1,15 +1,14 @@
 ﻿<aside>
     <div id="sidebar" class="nav-collapse">
-        <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
             <li>
-                <a class="active" href="{!! route('admin.dashboard') !!}">
+                <a class="active" asp-action="Index" asp-controller="Dashboard">
                     <i class="fa fa-home"></i>
                     <span>Trang chủ</span>
                 </a>
             </li>
             <li>
-                <a href="{!! route('home') !!}">
+                <a asp-action="Index" asp-controller="Dashboard">
                     <i class="fa fa-desktop"></i>
                     <span>Xem giao diện</span>
                 </a>
@@ -27,7 +26,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{!! route('admin.book-tours.index') !!}">
+                        <a href="#">
                             <span>Danh sách book tour</span>
                         </a>
                     </li>
@@ -35,19 +34,13 @@
             </li>
 
             <li>
-                <a href="{!! route('admin.destinations.index') !!}">
-                    <i class="fa fa-location-arrow"></i>
-                    <span>Đánh giá</span>
-                </a>
-            </li>
-            <li>
-                <a href="{!! route('admin.contacts.index') !!}">
+                <a asp-action="Index" asp-controller="Contact">
                     <i class="fa fa-comment"></i>
                     <span>Liên hệ</span>
                 </a>
             </li>
             <li>
-                <a href="{!! route('admin.blogs.index') !!}">
+                <a hasp-action="Index" asp-controller="Blog">
                     <i class="fa fa-file-text-o"></i>
                     <span>Bài viết</span>
                 </a>
@@ -59,10 +52,9 @@
                     <span>Cấu hình</span>
                 </a>
                 <ul class="sub">
-                    <li><a href="{!! route('admin.settings.website') !!}">Chung</a></li>
+                    <li><a asp-action="Index" asp-controller="Setting">Chung</a></li>
                 </ul>
             </li>
         </ul>
-        <!-- sidebar menu end-->
     </div>
 </aside>

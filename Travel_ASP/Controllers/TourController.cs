@@ -4,11 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using STM.DataAccess.Contexts;
 using Travel_ASP.Models;
 using Travel_ASP.ViewModels;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Travel_ASP.Controllers
 {
-    [Route("admin/tours")]
     public class TourController : Controller
     {
         private readonly TravelDbContext _db;
@@ -18,6 +16,8 @@ namespace Travel_ASP.Controllers
             _db = db;
         }
 
+        [HttpGet("admin/tours")]
+
         public IActionResult Index()
         {
             var tours = _db.Tours.ToList();
@@ -25,7 +25,7 @@ namespace Travel_ASP.Controllers
             return View();
         }
 
-        [HttpGet("createOrEdit")]
+        [HttpGet("admin/tours/createOrEdit")]
         public IActionResult CreateOrEdit(Guid? id)
         {
             var tour = new TourViewModel();
@@ -49,7 +49,7 @@ namespace Travel_ASP.Controllers
             return View();
         }
 
-        [HttpPost("save")]
+        [HttpPost("admin/tours/save")]
         public IActionResult Save(TourViewModel dto)
         {
             string path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads");
@@ -108,7 +108,7 @@ namespace Travel_ASP.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpPost("delete")]
+        [HttpPost("admin/tours/delete")]
         public IActionResult Delete(Guid id)
         {
             var tours = _db.Tours.FirstOrDefault(x => x.Id == id);
@@ -117,7 +117,7 @@ namespace Travel_ASP.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpGet("list")]
+        [HttpGet("tours/list")]
         public IActionResult List()
         {
             var tours = _db.Tours.ToList();
@@ -125,7 +125,7 @@ namespace Travel_ASP.Controllers
             return View();
         }
 
-        [HttpGet("list/{id}")]
+        [HttpGet("tours/list/{id}")]
         public IActionResult TourDetail(Guid id)
         {
             var tour = _db.Tours.FirstOrDefault(x=>x.Id == id);

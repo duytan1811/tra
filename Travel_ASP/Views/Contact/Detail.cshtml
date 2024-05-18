@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewData["Title"] = "Chi tiết liên hệ";
+    Layout = "~/Views/Shared/_Layout_admin.cshtml";
+    var contact = ViewData["Contact"] as Contact;
+}
+
+<div class="card">
+    <div class="card-header bg-primary text-white">
+        <label>Chi tiết liên hệ</label>
+    </div>
+    <div class="card-body">
+        <div class="row pb-3">
+            <div class="col-md-4">Tên người gửi</div>
+            <div class="col-md-8">@contact.FullName</div>
+        </div>
+        <div class="row pb-3">
+            <div class="col-md-4">Email</div>
+            <div class="col-md-8">@contact.Email</div>
+        </div>
+        <div class="row pb-3">
+            <div class="col-md-4">Số điện thoại</div>
+            <div class="col-md-8">@contact.Phone</div>
+        </div>
+        <div class="row pb-3">
+            <div class="col-md-4">Tiêu đề</div>
+            <div class="col-md-8">@contact.Subject</div>
+        </div>
+        <div class="row pb-3">
+            <div class="col-md-4">Nội dung</div>
+            <div class="col-md-8">@contact.Content</div>
+        </div>
+
+        <div class="row pb-3 float-right">
+            <div class="col-md-12">
+                <a asp-action="Index" asp-controller="Contact" class="btn btn-danger">Quay lại</a>
+            </div>
+        </div>
+    </div>
+</div>

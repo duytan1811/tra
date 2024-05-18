@@ -1,0 +1,128 @@
+﻿
+@{
+    ViewData["Title"] = "Contact";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var messages = TempData["Message"] as string;
+}
+@model Travel_ASP.ViewModels.ContactViewModel
+
+<section class="contact-info-one">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="contact-info-one__single">
+                    <div class="contact-info-one__icon">
+                        <i class="tripo-icon-placeholder"></i>
+                    </div>
+                    <div class="contact-info-one__content">
+                        <p>Địa chỉ</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="contact-info-one__single">
+                    <div class="contact-info-one__icon">
+                        <i class="tripo-icon-phone-call"></i>
+                    </div>
+                    <div class="contact-info-one__content">
+                        <p>
+                            <a href="tel:{{ $app_info['phone'] ?? config('constants.DEFAULT.PHONE') }}">Số điện thoại</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="contact-info-one__single">
+                    <div class="contact-info-one__icon">
+                        <i class="tripo-icon-message"></i>
+                    </div>
+                    <div class="contact-info-one__content">
+                        <p>
+                            <a href="mailto:{{ $app_info['email'] ?? config('constants.DEFAULT.EMAIL') }}">Email</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="contact-one">
+    <div class="container">
+        
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="contact-one__content">
+                    <div class="block-title text-left">
+                        <p>Liên hệ với</p>
+                        <h3>Travel </h3>
+                    </div>
+                    <div class="contact-one__content-text">
+                        <p>Nếu bạn có thắc mắc nào</p>
+                    </div>
+                    <div class="contact-one__social">
+                        <a href="#"><i class="fab fa-facebook-square"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-7">
+                @if (!string.IsNullOrEmpty(messages))
+                {
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="alert alert-success">
+                                @messages
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                <form asp-action="SendContact" asp-controller="Contact" method="post" class="contact-one__form">
+                    <div class="row low-gutters">
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <input type="text"  asp-for="FullName"
+                                       placeholder="Họ tên *">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <input type="email"asp-for="Email"
+                                       placeholder="Email *">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <input type="text" asp-for="Phone"
+                                       placeholder="Số điện thoại *">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <input type="text" asp-for="Subject"
+                                       placeholder="Tiêu đề *">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="input-group">
+                                <textarea asp-for="Content"
+                                          placeholder="Nội dung *"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="input-group">
+                                <button type="submit"
+                                        class="thm-btn contact-one__btn">
+                                   Gửi
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.714655438919!2d106.86695031433825!3d10.984897258315941!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTDCsDU5JzA1LjYiTiAxMDbCsDUyJzA4LjkiRQ!5e0!3m2!1svi!2s!4v1593929319579!5m2!1svi!2s"
+        class="google-map__contact" allowfullscreen></iframe>
+

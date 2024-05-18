@@ -3,7 +3,7 @@
     var popTours= ViewData["PopTours"] as List<Tour>;
 }
 
-<section class="banner-one" style="background-image: url('{{ asset('images/background/banner-1-1-bg.jpg') }}');">
+<section class="banner-one" style="background-image: url('/assets/images/background/banner-1-1-bg.jpg');">
         <div class="container">
             <h2>Tìm Kiếm <span>Tour Du Lịch</span></h2>
             <p>Địa chỉ cần tìm kiếm?</p>
@@ -117,7 +117,7 @@
         </div>
     </section>
 
-    <section class="video-one" style="background-image: url('{{ asset('images/background/video-bg-1-1.jpg') }}');">
+    <section class="video-one" style="background-image: url('/assets/images/background/video-bg-1-1.jpg');">
         <div class="container text-center">
             <a href="https://www.youtube.com/watch?v=i9E_Blai8vk" class="video-one__btn video-popup"><i class="fa fa-play"></i></a>
             <p>Nơi bạn yêu thích</p>
@@ -135,7 +135,7 @@
                                 <p>Chuyên Nghiệp</p>
                                 <h3>Được Tin Tưởng <br> Bởi Hơn <span class="counter">199</span> <br> Khách Hàng</h3>
                             </div>
-                            <img src="{{ asset('images/background/cta-3-1.jpg') }}" data-wow-duration="1500ms" class="wow fadeInLeft img-fluid" alt="">
+                            <img src="/assets/images/background/cta-3-1.jpg" data-wow-duration="1500ms" class="wow fadeInLeft img-fluid" alt="">
                             <div class="cta-three__box">
                                 <p>Chúng tôi luôn mang đến
                                     <br> điều tốt nhất cho bạn</p>
@@ -145,26 +145,9 @@
                 </div>
                 <div class="col-lg-6 text-lg-right text-md-center">
                     <div class="cta-three__images wow fadeInRight" data-wow-duration="1500ms">
-                        <img src="{{ asset('images/background/cta-3-2.jpg') }}" class="img-fluid" alt="">
+                    <img src="/assets/images/background/cta-3-2.jpg" class="img-fluid" alt="">
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="destinations-two">
-        <div class="container">
-            <div class="block-title text-center">
-                <p>Địa Điểm Nổi Bật</p>
-                <h3>Địa Điểm Hot</h3>
-            </div>
-            <div class="row">
-                    <div class="col-lg-4">
-                        <div class="destinations-two__single wow fadeInLeft" data-wow-duration="1500ms" data-wow-delay="000ms">
-                            <img src="{!! $destination->imageUrl() !!}" alt="">
-                            <h3><a href="{!! route('destinations.detail',$destination->id) !!}">{{ $destination->province->province }}</a></h3>
-                        </div>
-                    </div>
             </div>
         </div>
     </section>
