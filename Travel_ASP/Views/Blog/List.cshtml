@@ -8,7 +8,7 @@
 <section class="blog-one blog-one__grid">
     <div class="container">
         <div class="row">
-            @if (blogs != null)
+            @if (blogs != null && blogs.Count > 0)
             {
                 @foreach (var blog in blogs)
                 {

@@ -145,7 +145,7 @@ namespace Travel_ASP.Controllers
                 }
                 else
                 {
-                    query = query.Where(x => x.DayCount >3);
+                    query = query.Where(x => x.DayCount > 3);
                 }
             }
             if (dto.PeopleCount.HasValue)
@@ -153,17 +153,18 @@ namespace Travel_ASP.Controllers
                 if (dto.PeopleCount == 1)
                 {
                     query = query.Where(x => x.MaxPeople < 3);
-                }else if (dto.PeopleCount ==2)
-                {
-                    query = query.Where(x => x.MaxPeople <=8 && x.MinPeople >=3);
                 }
-                else if (dto.PeopleCount ==3)
+                else if (dto.PeopleCount == 2)
+                {
+                    query = query.Where(x => x.MaxPeople <= 8 && x.MinPeople >= 3);
+                }
+                else if (dto.PeopleCount == 3)
                 {
                     query = query.Where(x => x.MinPeople > 8);
                 }
             }
 
-            var tours = query.Include(x=>x.Province).ToList();
+            var tours = query.Include(x => x.Province).ToList();
 
             var defaultImage = _db.Configurations.FirstOrDefault(x => x.Key == "defaultTourImage");
             foreach (var tour in tours)
@@ -180,7 +181,7 @@ namespace Travel_ASP.Controllers
         [HttpGet("tours/list/{id}")]
         public IActionResult TourDetail(Guid id)
         {
-            var tour = _db.Tours.FirstOrDefault(x => x.Id == id);
+            var tour = _db.Tours.Include(x => x.Province).FirstOrDefault(x => x.Id == id);
             var defaultImage = _db.Configurations.FirstOrDefault(x => x.Key == "defaultTourImage");
 
             if (string.IsNullOrEmpty(tour.Image))

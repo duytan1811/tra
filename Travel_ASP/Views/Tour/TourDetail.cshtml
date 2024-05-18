@@ -7,96 +7,94 @@
 }
 
 <section class="tour-two tour-list">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="tour-details__content">
-                        <div class="tour-two__top">
-                            <div class="tour-two__top-left">
-                                <h3>@tour.Name</h3>
-                            </div>
-                            <div class="tour-two__right">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="tour-details__content">
+                    <div class="tour-two__top">
+                        <div class="tour-two__top-left">
+                            <h3>@tour.Name</h3>
+                        </div>
+                        <div class="tour-two__right">
                             <p>
                                 <span>@tour.Price.Value.ToString("#,### đ", CultureInfo.GetCultureInfo("vi-VN"))</span> <br>
                                 <strike>@tour.Price.Value.ToString("#,### đ", CultureInfo.GetCultureInfo("vi-VN"))</strike>
                             </p>
-                            </div>
                         </div>
-                        <ul class="tour-one__meta list-unstyled">
+                    </div>
+                    <ul class="tour-one__meta list-unstyled">
                         <li><a href="javascript:void(0)"><i class="far fa-clock"></i> @tour.DayCount ngày</a></li>
                         <li><a href="javascript:void(0)"><i class="far fa-user-circle"></i> @tour.MinPeople - @tour.MaxPeople người</a></li>
                         <li><a href="javascript:void(0)"><i class="far fa-map"></i>@tour.Province?.Name</a></li>
-                        </ul>
+                    </ul>
 
-                        <div class="tour-details__gallery-carousel">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <div class="tour-details__gallery-image">
+                    <div class="tour-details__gallery-carousel">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="tour-details__gallery-image">
                                     <img src="/uploads/@tour.Image" alt="" height="468" width="770">
-                                    </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="tour-details__gallery-thumb-carousel">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <div class="tour-details__gallery-thumb-image">
-                                        <img src="/uploads/@tour.Image" alt="" height="140px" width="146px">
-                                    </div>
-                                </div>
-                               
-                            </div>
-                        </div>
-                        <h3 class="tour-details__title">Nội dung</h3>
-                        <p>@tour.Detail</p>
-                        <div class="tour-details__spacer"></div>
-                        <h3 class="tour-details__title">Lịch Trình</h3><
-
-                        <div class="tour-details__plan">
-                            
                         </div>
                     </div>
-                </div>
 
-                <div class="col-lg-4">
-                    <div class="tour-sidebar">
-                        <div class="tour-sidebar__search tour-sidebar__single">
-                            <h3>Đặt Lịch</h3>
-                            <form action="#" method="post" class="tour-sidebar__search-form">
-                                <input type="hidden" name="tour_id" value="{{ $tour->id }}">
-                                <div class="input-group">
-                                    <input type="text" name="full_name" placeholder="Họ tên">
+                    <div class="tour-details__gallery-thumb-carousel">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="tour-details__gallery-thumb-image">
+                                    <img src="/uploads/@tour.Image" alt="" height="140px" width="146px">
                                 </div>
-                                <div class="input-group">
-                                    <input type="email" name="email" placeholder="Email">
-                                </div>
-                                <div class="input-group">
-                                    <input type="text" name="phone" placeholder="Số điện thoại">
-                                </div>
-                                <div class="input-group">
-                                    <input type="text" name="address" placeholder="Địa chủ">
-                                </div>
-                                <div class="input-group">
-                                    <textarea name="requirement" placeholder="Nội dung"></textarea>
-                                </div>
-                                <div class="input-group">
-                                    <button type="submit" class="thm-btn">Đặt ngay</button>
-                                </div>
-                            </form>
+                            </div>
+
                         </div>
-                        <div class="tour-sidebar__organizer">
-                            <h3>Hướng dẫn viên</h3>
-                            <div class="tour-sidebar__organizer-content">
-                                <img src="/assets/images/back_disabled.png" alt="" height="76" width="76" style="border-radius: 50%">
-                                <h3>Nguyễn Văn A</h3>
+                    </div>
+                    <h3 class="tour-details__title">Nội dung</h3>
+                    <p>@tour.Detail</p>
+                    <div class="tour-details__spacer"></div>
+                    <h3 class="tour-details__title">Lịch Trình</h3>
+
+                    <div class="tour-details__plan">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="tour-sidebar">
+                    <div class="tour-sidebar__search tour-sidebar__single">
+                        <h3>Đặt Lịch</h3>
+                        <form action="#" method="post" class="tour-sidebar__search-form">
+                            <div class="input-group">
+                                <input type="text" name="full_name" placeholder="Họ tên">
+                            </div>
+                            <div class="input-group">
+                                <input type="email" name="email" placeholder="Email">
+                            </div>
+                            <div class="input-group">
+                                <input type="text" name="phone" placeholder="Số điện thoại">
+                            </div>
+                            <div class="input-group">
+                                <input type="text" name="address" placeholder="Địa chủ">
+                            </div>
+                            <div class="input-group">
+                                <textarea name="requirement" placeholder="Nội dung"></textarea>
+                            </div>
+                            <div class="input-group">
+                                <button type="submit" class="thm-btn">Đặt ngay</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="tour-sidebar__organizer">
+                        <h3>Hướng dẫn viên</h3>
+                        <div class="tour-sidebar__organizer-content">
+                            <img src="/assets/images/profile-avatar.jpg" alt="" height="76" width="76" style="border-radius: 50%">
+                            <h3>Nguyễn Văn A</h3>
                             <a href="tel:08433434343" class="text-danger"><i class="fa fa-phone-alt"></i> 08433434343</a>
 
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
