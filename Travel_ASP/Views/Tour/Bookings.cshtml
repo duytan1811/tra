@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewData["Title"] = "Bookings";
+    Layout = "~/Views/Shared/_Layout_admin.cshtml";
+    var bookings = ViewData["Bookings"] as List<Booking>;
+    var loopIndex = 1;
+}
+<div class="card">
+    <div class="card-body">
+        <div class="adv-table table-responsive">
+            <table class="display table table-bordered table-striped data-table">
+                <thead class="bg-info text-white">
+                    <tr>
+                        <th>#</th>
+                        <th>Tour</th>
+                        <th>Tên người đặt</th>
+                        <th>Số điện thoại</th>
+                        <th>Email</th>
+                        
+                        <th>Chức năng</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var booking in bookings)
+                    {
+                        <tr>
+                            <th>@loopIndex</th>
+                            <th>@booking.Tour.Name</th>
+                            <th>@booking.FullName</th>
+                            <th>@booking.Phone</th>
+                            <th>@booking.Email</th>
+                            <th>
+                                <a asp-action="BookingDetail" asp-controller="Tour" asp-route-id="@booking.Id" class="btn btn-sm btn-success d-inline-block">Xem</a>
+                                <form class="d-inline-block" method="Post" asp-action="DeleteBooking" asp-controller="Tour" asp-route-id="@booking.Id">
+                                    <button class="btn btn-sm btn-danger" type="submit">Xóa</button>
+                                </form>
+                            </th>
+                        </tr>
+                        loopIndex++;
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+

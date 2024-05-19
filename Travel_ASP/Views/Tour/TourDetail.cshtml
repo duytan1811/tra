@@ -4,7 +4,9 @@
     ViewData["Title"] = "TourDetail";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var tour = ViewData["Tour"] as Tour;
+    var messages = TempData["Message"] as string;
 }
+@model Travel_ASP.ViewModels.BookingViewModel
 
 <section class="tour-two tour-list">
     <div class="container">
@@ -62,21 +64,31 @@
                 <div class="tour-sidebar">
                     <div class="tour-sidebar__search tour-sidebar__single">
                         <h3>Đặt Lịch</h3>
-                        <form action="#" method="post" class="tour-sidebar__search-form">
+                        @if (!string.IsNullOrEmpty(messages))
+                        {
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="alert alert-success">
+                                        @messages
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        <form asp-route-id="@tour.Id" asp-action="Booking" asp-controller="Tour" method="post" class="tour-sidebar__search-form">
                             <div class="input-group">
-                                <input type="text" name="full_name" placeholder="Họ tên">
+                                <input type="text" asp-for="FullName" placeholder="Họ tên">
                             </div>
                             <div class="input-group">
-                                <input type="email" name="email" placeholder="Email">
+                                <input type="email" asp-for="Email" placeholder="Email">
                             </div>
                             <div class="input-group">
-                                <input type="text" name="phone" placeholder="Số điện thoại">
+                                <input type="text" asp-for="Phone" placeholder="Số điện thoại">
                             </div>
                             <div class="input-group">
-                                <input type="text" name="address" placeholder="Địa chủ">
+                                <input type="text" asp-for="Address" placeholder="Địa chủ">
                             </div>
                             <div class="input-group">
-                                <textarea name="requirement" placeholder="Nội dung"></textarea>
+                                <textarea asp-for="Message" placeholder="Nội dung"></textarea>
                             </div>
                             <div class="input-group">
                                 <button type="submit" class="thm-btn">Đặt ngay</button>

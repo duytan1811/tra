@@ -16,7 +16,6 @@ namespace Travel_ASP.Controllers
         }
 
         [HttpGet("admin/tours")]
-
         public IActionResult Index()
         {
             var tours = _db.Tours.ToList();
@@ -118,7 +117,7 @@ namespace Travel_ASP.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpPost("admin/tours/delete")]
+        [HttpPost("admin/tours/{id}/delete")]
         public IActionResult Delete(Guid id)
         {
             var tours = _db.Tours.FirstOrDefault(x => x.Id == id);
@@ -126,6 +125,33 @@ namespace Travel_ASP.Controllers
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+
+        [HttpGet("admin/tours/bookings")]
+        public IActionResult Bookings()
+        {
+            var bookings = _db.Bookings.Include(x => x.Tour).ToList();
+            ViewData["Bookings"] = bookings;
+            return View();
+        }
+
+        [HttpGet("admin/bookings/{id}")]
+        public IActionResult BookingDetail(Guid id)
+        {
+            var booking = _db.Bookings.Include(x => x.Tour).FirstOrDefault(x => x.Id == id);
+
+            return View(booking);
+        }
+
+        [HttpPost("admin/bookings/{id}/delete")]
+        public IActionResult DeleteBooking(Guid id)
+        {
+            var booking = _db.Bookings.FirstOrDefault(x => x.Id == id);
+            _db.Bookings.Remove(booking);
+            _db.SaveChanges();
+            return RedirectToAction("Bookings");
+        }
+
 
         [HttpGet("tours/list")]
         public IActionResult List(SearchViewModel dto)
@@ -191,6 +217,25 @@ namespace Travel_ASP.Controllers
 
             ViewData["Tour"] = tour;
             return View();
+        }
+
+        [HttpPost("tours/list/{id}/booking")]
+        public IActionResult Booking(Guid id, BookingViewModel dto)
+        {
+            var newBooking = new Booking()
+            {
+                TourId = id,
+                FullName = dto.FullName,
+                Email = dto.Email,
+                Phone = dto.Phone,
+                Message = dto.Message,
+                Address = dto.Address,
+            };
+            _db.Bookings.Add(newBooking);
+            _db.SaveChanges();
+
+            TempData["Message"] = "Đặt lịch thành công";
+            return RedirectToAction("TourDetail", "Tour", new { Id = id });
         }
 
     }

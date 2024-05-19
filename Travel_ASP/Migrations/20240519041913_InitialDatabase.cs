@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Travel_ASP.Migrations
 {
-    public partial class InititalDatabase : Migration
+    public partial class InitialDatabase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -271,16 +271,44 @@ namespace Travel_ASP.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Bookings",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    TourId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    FullName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Message = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Status = table.Column<int>(type: "int", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    CreatedById = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdatedById = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Bookings", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Bookings_Tours_TourId",
+                        column: x => x.TourId,
+                        principalTable: "Tours",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.InsertData(
                 table: "Configurations",
                 columns: new[] { "Id", "CreatedAt", "CreatedById", "Key", "Status", "UpdatedAt", "UpdatedById", "Value" },
                 values: new object[,]
                 {
-                    { new Guid("01280e36-02e6-4663-823e-5e14e287bede"), null, null, "phone", null, null, null, "" },
-                    { new Guid("11d9a927-1770-439e-9daf-095a66d1d7b3"), null, null, "defaultTourImage", null, null, null, "" },
-                    { new Guid("5e77b941-2315-477e-a05a-69679da70afc"), null, null, "defaultBlogImage", null, null, null, "" },
-                    { new Guid("b8d91fab-5b62-41ef-aacb-19791db98739"), null, null, "email", null, null, null, "" },
-                    { new Guid("dae5400a-54d2-4568-8566-6e89c6dc9f87"), null, null, "appName", null, null, null, "" }
+                    { new Guid("154e4306-fcaf-4a7e-b257-c56ac7b7544e"), null, null, "phone", null, null, null, "" },
+                    { new Guid("22db1a6c-d8fb-45ee-a23d-1b0071a14172"), null, null, "defaultBlogImage", null, null, null, "" },
+                    { new Guid("9c68c504-5109-4fae-a80f-e5cbcaec12f0"), null, null, "appName", null, null, null, "" },
+                    { new Guid("cce50faa-37fa-4ed8-b663-1bd75c3f94a9"), null, null, "email", null, null, null, "" },
+                    { new Guid("d8e605d9-f087-42ba-9b6e-258903a1e53f"), null, null, "defaultTourImage", null, null, null, "" }
                 });
 
             migrationBuilder.InsertData(
@@ -288,43 +316,43 @@ namespace Travel_ASP.Migrations
                 columns: new[] { "Id", "CreatedAt", "CreatedById", "Name", "ProvinceId", "Slug", "Status", "Type", "UpdatedAt", "UpdatedById" },
                 values: new object[,]
                 {
-                    { new Guid("0049f9c7-aa39-4b87-886b-0e5ac0ff5342"), null, null, "Bình Định", null, null, null, null, null, null },
-                    { new Guid("01bfe577-4b91-40b7-a580-cf200362d243"), null, null, "Thái Nguyên", null, null, null, null, null, null },
-                    { new Guid("07482a9f-9385-48b9-8f8d-40e3abb54b0a"), null, null, "Long An", null, null, null, null, null, null },
-                    { new Guid("0850c75d-963b-4d86-885a-5efdb7ce3553"), null, null, "Đắk Lắk", null, null, null, null, null, null },
-                    { new Guid("09fa3865-4cc7-4c0f-8ffd-654de8dea2d9"), null, null, "Phú Thọ", null, null, null, null, null, null },
-                    { new Guid("0e888f9c-4cec-4c4e-9318-80bbf130b501"), null, null, "Sóc Trăng", null, null, null, null, null, null },
-                    { new Guid("0ecef50e-c372-4ce8-a3d4-9e0b81bd8e24"), null, null, "Nam Định", null, null, null, null, null, null },
-                    { new Guid("14884c7b-30e9-487c-8a92-e9bb539e69dd"), null, null, "Nghệ An", null, null, null, null, null, null },
-                    { new Guid("21268bac-5f6f-4240-8a2d-6fd0a15c319c"), null, null, "Thanh Hóa", null, null, null, null, null, null },
-                    { new Guid("2207dfcf-efef-4f9d-af9f-1a8d91a79041"), null, null, "Vĩnh Long", null, null, null, null, null, null },
-                    { new Guid("2ae69a2a-7cbb-493f-954c-f884ec829656"), null, null, "Quảng Ngãi", null, null, null, null, null, null },
-                    { new Guid("2bc4da99-1191-4c15-b966-74e1e8bd5ff2"), null, null, "Phú Yên", null, null, null, null, null, null },
-                    { new Guid("3178fe83-f1da-458f-9caa-cb06fcc3710c"), null, null, "Cà Mau", null, null, null, null, null, null },
-                    { new Guid("39e8bf36-6628-4aa0-8ada-b2930eff3000"), null, null, "Hải Phòng", null, null, null, null, null, null },
-                    { new Guid("3be2834f-d469-4656-a354-f0981414b78d"), null, null, "Bình Dương", null, null, null, null, null, null },
-                    { new Guid("3e69ed6f-8c20-4936-98db-52b07621ac59"), null, null, "Quảng Ninh", null, null, null, null, null, null },
-                    { new Guid("480739d3-559b-4945-9a4a-f4b320bf742c"), null, null, "Thái Bình", null, null, null, null, null, null },
-                    { new Guid("482739cb-06cc-4b5e-8c87-2a0027e1af3b"), null, null, "Gia Lai", null, null, null, null, null, null },
-                    { new Guid("4aa677a3-ac6d-4225-a3d7-e3174136fbc8"), null, null, "Bình Thuận", null, null, null, null, null, null },
-                    { new Guid("4ae12f71-ba21-41fd-a6d8-66cd3f633748"), null, null, "Hà Giang", null, null, null, null, null, null },
-                    { new Guid("5098c722-7a8f-4be0-a266-1980593f060d"), null, null, "An Giang", null, null, null, null, null, null },
-                    { new Guid("51c47de0-06af-42d5-9258-07ff826dfe8f"), null, null, "Thừa Thiên Huế", null, null, null, null, null, null },
-                    { new Guid("5add419a-f809-47ae-b8d9-80edce9dc41e"), null, null, "Kiên Giang", null, null, null, null, null, null },
-                    { new Guid("5b784652-5ed6-4773-bb19-f7fce97a61c8"), null, null, "Hậu Giang", null, null, null, null, null, null },
-                    { new Guid("5dbf9ce3-23a2-43f1-9a73-acd466be1bc3"), null, null, "Đồng Tháp", null, null, null, null, null, null },
-                    { new Guid("61fd92f9-653a-42df-8e0d-861acf1e064e"), null, null, "Bắc Kạn", null, null, null, null, null, null },
-                    { new Guid("62539ba1-53ba-41e1-b54f-a09fffd18d3a"), null, null, "Tây Ninh", null, null, null, null, null, null },
-                    { new Guid("63d4a117-5bcd-4d5f-a412-c48130971aaf"), null, null, "Quảng Bình", null, null, null, null, null, null },
-                    { new Guid("67b952a7-18d6-4241-a21e-16b151328b7b"), null, null, "Hưng Yên", null, null, null, null, null, null },
-                    { new Guid("694ba9ec-bd31-403e-bfe0-2de5a2b537c2"), null, null, "Quảng Trị", null, null, null, null, null, null },
-                    { new Guid("6974ced2-6557-49d8-8500-1c1dd67c7723"), null, null, "Điện Biên", null, null, null, null, null, null },
-                    { new Guid("6a996415-fee7-4410-b675-1732583a6704"), null, null, "Khánh Hòa", null, null, null, null, null, null },
-                    { new Guid("71b348cc-90b2-49fa-afee-d929f9695c93"), null, null, "Bến Tre", null, null, null, null, null, null },
-                    { new Guid("73a948cc-fd6f-4dd9-9c79-346977cea1c2"), null, null, "Trà Vinh", null, null, null, null, null, null },
-                    { new Guid("76f6a11f-dcc0-4496-9969-7fae593d900c"), null, null, "Sơn La", null, null, null, null, null, null },
-                    { new Guid("7c6bd094-b67f-4462-898f-e5b6ea08f313"), null, null, "Thành phố Hồ Chí Minh", null, null, null, null, null, null },
-                    { new Guid("7fb45860-256e-4045-bc14-fd8c550e7206"), null, null, "Hà Nội", null, null, null, null, null, null }
+                    { new Guid("02b2fda4-3315-4e7b-8484-0ab1a16b105d"), null, null, "Tuyên Quang", null, null, null, null, null, null },
+                    { new Guid("05b61942-6804-4ee7-8a53-f42fb9e29e57"), null, null, "Ninh Thuận", null, null, null, null, null, null },
+                    { new Guid("06ea0cc0-358e-48fd-9945-352c618eb4ea"), null, null, "Trà Vinh", null, null, null, null, null, null },
+                    { new Guid("0b0789f1-9eb3-4a13-9c9a-405ca38d4019"), null, null, "Thành phố Hồ Chí Minh", null, null, null, null, null, null },
+                    { new Guid("0c37c0fd-b134-4dcf-8cd1-9e401b79f73b"), null, null, "Cần Thơ", null, null, null, null, null, null },
+                    { new Guid("0da4ee73-807a-4fe9-be2d-f32a3e76bf15"), null, null, "Hà Giang", null, null, null, null, null, null },
+                    { new Guid("0ef1a240-bd21-472a-9fd2-e4288e651f9a"), null, null, "Quảng Ngãi", null, null, null, null, null, null },
+                    { new Guid("1759e3b5-b300-4800-ad97-916b3820d121"), null, null, "Đồng Tháp", null, null, null, null, null, null },
+                    { new Guid("24d669d6-5371-4a72-801c-d512396fca16"), null, null, "Kon Tum", null, null, null, null, null, null },
+                    { new Guid("278b3bbd-1c7d-4d2e-81c6-5dd7594a7e74"), null, null, "Đắk Nông", null, null, null, null, null, null },
+                    { new Guid("2caa5d66-92ce-45f8-8bd5-69d54cfc9e86"), null, null, "Thái Nguyên", null, null, null, null, null, null },
+                    { new Guid("2e58e891-a60c-4d7b-83f1-9ecea3eabed5"), null, null, "Sóc Trăng", null, null, null, null, null, null },
+                    { new Guid("2e8de93a-4bf2-447f-9d41-22e9bac83f05"), null, null, "Thái Bình", null, null, null, null, null, null },
+                    { new Guid("336b90be-1252-4600-a3d2-3046040eb63b"), null, null, "Phú Thọ", null, null, null, null, null, null },
+                    { new Guid("38e721ac-c526-4cab-899b-ae68ce517d0b"), null, null, "Lào Cai", null, null, null, null, null, null },
+                    { new Guid("39baeb22-b4d7-4071-b093-5a648be565d7"), null, null, "An Giang", null, null, null, null, null, null },
+                    { new Guid("427b1ec1-c01b-4f73-97dd-f02fd935e508"), null, null, "Hà Nam", null, null, null, null, null, null },
+                    { new Guid("42d6c600-8b1e-43b3-8ec7-39c000f89b43"), null, null, "Điện Biên", null, null, null, null, null, null },
+                    { new Guid("4426ce92-0c13-46a6-b1ba-743f384053c2"), null, null, "Hà Nội", null, null, null, null, null, null },
+                    { new Guid("4c3a6896-9876-455e-85bf-77427e8efddb"), null, null, "Đắk Lắk", null, null, null, null, null, null },
+                    { new Guid("4e08dce0-1fa6-45a6-b048-de8ff5bfdd5c"), null, null, "Long An", null, null, null, null, null, null },
+                    { new Guid("4fda11b0-cb47-4231-ae44-5e91aab1eb1c"), null, null, "Quảng Bình", null, null, null, null, null, null },
+                    { new Guid("50be2ab1-eb0c-42a7-b58b-418452802065"), null, null, "Bà Rịa – Vũng Tàu", null, null, null, null, null, null },
+                    { new Guid("53b2e766-1eaa-47b9-b2a5-5459f8596bad"), null, null, "Bình Phước", null, null, null, null, null, null },
+                    { new Guid("5ee9e5c2-3931-4264-9529-a5d4d6c79c02"), null, null, "Bình Thuận", null, null, null, null, null, null },
+                    { new Guid("5fd79732-298b-474c-8a1b-dcd80fc90ffa"), null, null, "Hải Dương", null, null, null, null, null, null },
+                    { new Guid("61522160-e263-4b4d-bfac-77503c14d159"), null, null, "Tiền Giang", null, null, null, null, null, null },
+                    { new Guid("662390ca-3698-4868-9967-f277bb3e3d05"), null, null, "Quảng Nam", null, null, null, null, null, null },
+                    { new Guid("6e6af074-6f20-4b1b-a0fa-6bb2a81175ed"), null, null, "Sơn La", null, null, null, null, null, null },
+                    { new Guid("6f14f511-a616-4854-ac3f-45d68fab03c0"), null, null, "Lạng Sơn", null, null, null, null, null, null },
+                    { new Guid("768f56b1-2802-436d-b12c-16ce1f1cf86f"), null, null, "Yên Bái", null, null, null, null, null, null },
+                    { new Guid("79fc1791-d95a-47a5-90b3-4e092cabf258"), null, null, "Hải Phòng", null, null, null, null, null, null },
+                    { new Guid("7b7a1fc4-072d-49fc-859b-c678cb917252"), null, null, "Quảng Trị", null, null, null, null, null, null },
+                    { new Guid("7bbd3239-64fb-4d13-af4c-c6fcf032e33a"), null, null, "Phú Yên", null, null, null, null, null, null },
+                    { new Guid("805e589f-519c-46ff-888c-a7c0944aeec5"), null, null, "Hậu Giang", null, null, null, null, null, null },
+                    { new Guid("9173d0db-fef6-4fa4-a504-663e27b990ae"), null, null, "Ninh Bình", null, null, null, null, null, null },
+                    { new Guid("9427a6d7-d835-4a1a-b06a-3bcd03314c2e"), null, null, "Hà Tĩnh", null, null, null, null, null, null }
                 });
 
             migrationBuilder.InsertData(
@@ -332,38 +360,43 @@ namespace Travel_ASP.Migrations
                 columns: new[] { "Id", "CreatedAt", "CreatedById", "Name", "ProvinceId", "Slug", "Status", "Type", "UpdatedAt", "UpdatedById" },
                 values: new object[,]
                 {
-                    { new Guid("83741c05-d0db-4c65-978c-5ac853c6e9f4"), null, null, "Ninh Bình", null, null, null, null, null, null },
-                    { new Guid("84eec50a-b9f1-4daf-b54b-8caa1adc2357"), null, null, "Lạng Sơn", null, null, null, null, null, null },
-                    { new Guid("87c60cdf-06ad-433c-9b6f-105a07a57508"), null, null, "Ninh Thuận", null, null, null, null, null, null },
-                    { new Guid("938e3890-2ba4-46e7-b4b4-532a8c729cf9"), null, null, "Lâm Đồng", null, null, null, null, null, null },
-                    { new Guid("95c2946f-4f20-4614-88dc-1123935fa6a4"), null, null, "Đồng Nai", null, null, null, null, null, null },
-                    { new Guid("9893a16e-b753-492f-b99a-5802000ddafb"), null, null, "Tuyên Quang", null, null, null, null, null, null },
-                    { new Guid("9b8193ee-b69c-4c76-b8d1-b97942af268e"), null, null, "Hà Nam", null, null, null, null, null, null },
-                    { new Guid("9c05d561-d439-4ddd-a347-dbe22f56f80c"), null, null, "Cần Thơ", null, null, null, null, null, null },
-                    { new Guid("9f058b4e-db77-49d0-abb2-0f83deb6d9a0"), null, null, "Đắk Nông", null, null, null, null, null, null },
-                    { new Guid("a4809a85-4e23-48e6-af79-18f711f91933"), null, null, "Quảng Nam", null, null, null, null, null, null },
-                    { new Guid("b81f8a3f-6e0a-439c-81ea-31c38f41a554"), null, null, "Bà Rịa – Vũng Tàu", null, null, null, null, null, null },
-                    { new Guid("bb843c76-d840-4fe6-ad91-0f0b947ab23a"), null, null, "Hòa Bình", null, null, null, null, null, null },
-                    { new Guid("bfad7a5b-7c65-4104-951d-184bd26760f1"), null, null, "Bình Phước", null, null, null, null, null, null },
-                    { new Guid("c3aa0c9d-d274-4bea-b1f3-1e3d505c32f7"), null, null, "Kon Tum", null, null, null, null, null, null },
-                    { new Guid("c64d6812-e660-4de4-b9ed-bd339ab758a8"), null, null, "Tiền Giang", null, null, null, null, null, null },
-                    { new Guid("cad9d75e-e333-4192-a6e2-b3bc61bbed48"), null, null, "Yên Bái", null, null, null, null, null, null },
-                    { new Guid("d36dc3c9-4752-434f-87d7-4b0a7b95c955"), null, null, "Lai Châu", null, null, null, null, null, null },
-                    { new Guid("d9bd3cc1-fe39-47ae-ac9b-4471fccb9241"), null, null, "Cao Bằng", null, null, null, null, null, null },
-                    { new Guid("da4d3994-f416-4746-a994-65fb2cfedfd8"), null, null, "Bạc Liêu", null, null, null, null, null, null },
-                    { new Guid("e109d927-710e-49a0-8ae4-52c2f57b2064"), null, null, "Hà Tĩnh", null, null, null, null, null, null },
-                    { new Guid("e1ec1a9a-f469-423f-970f-f9139008a378"), null, null, "Lào Cai", null, null, null, null, null, null },
-                    { new Guid("e317318f-547d-46e7-b077-476d97d0735e"), null, null, "Hải Dương", null, null, null, null, null, null },
-                    { new Guid("ea50ceec-b4c2-4075-b388-2fdb4bb262e6"), null, null, "Bắc Ninh", null, null, null, null, null, null },
-                    { new Guid("ece5d94b-66e1-45be-bcdb-2f64b8aa48d4"), null, null, "Bắc Giang", null, null, null, null, null, null },
-                    { new Guid("f81e06ee-36eb-4d29-83fe-7d11dc91536b"), null, null, "Đà Nẵng", null, null, null, null, null, null },
-                    { new Guid("fad19112-3f4a-4e53-949d-b9a1128ff168"), null, null, "Vĩnh Phúc", null, null, null, null, null, null }
+                    { new Guid("976f8c4b-a929-4a7e-817f-5af090cec540"), null, null, "Thanh Hóa", null, null, null, null, null, null },
+                    { new Guid("9874c76e-eafe-4816-a32f-151a6fc59ab6"), null, null, "Bình Định", null, null, null, null, null, null },
+                    { new Guid("9a61aafd-1cdd-4dab-a042-8321570055b5"), null, null, "Khánh Hòa", null, null, null, null, null, null },
+                    { new Guid("a280a102-1ec6-4c6c-9858-f646fa37b2b5"), null, null, "Quảng Ninh", null, null, null, null, null, null },
+                    { new Guid("a34d739d-b05f-43dd-8455-68ad897cbf8e"), null, null, "Bạc Liêu", null, null, null, null, null, null },
+                    { new Guid("afd1de18-c7b9-4bda-88ff-1899889d9e2c"), null, null, "Hưng Yên", null, null, null, null, null, null },
+                    { new Guid("b7b07fb6-cad8-4612-ad68-0714f9ba8895"), null, null, "Vĩnh Long", null, null, null, null, null, null },
+                    { new Guid("baad4bd0-6215-44f2-b08f-e7dda5a0cfbe"), null, null, "Lâm Đồng", null, null, null, null, null, null },
+                    { new Guid("c255dc71-9b54-4f0f-99bf-237ea92b1614"), null, null, "Kiên Giang", null, null, null, null, null, null },
+                    { new Guid("c7c61d02-3436-49bc-ae4e-8c058a608aa7"), null, null, "Đồng Nai", null, null, null, null, null, null },
+                    { new Guid("cb7d9223-a0fc-4091-ae61-fb0252be22da"), null, null, "Bắc Kạn", null, null, null, null, null, null },
+                    { new Guid("ccff2fb2-dbc5-4e6d-aea0-aa39da7c87c5"), null, null, "Bến Tre", null, null, null, null, null, null },
+                    { new Guid("d30782d0-46f8-4534-aa9b-c8a96a34a8de"), null, null, "Bắc Giang", null, null, null, null, null, null },
+                    { new Guid("d3a76ae3-fda7-4aea-a60a-8c4335a86bd8"), null, null, "Đà Nẵng", null, null, null, null, null, null },
+                    { new Guid("d4b07036-7e95-4c2a-837c-b0f30bd42c86"), null, null, "Cao Bằng", null, null, null, null, null, null },
+                    { new Guid("d8364b93-e017-4d66-91a7-1a6923462b19"), null, null, "Nam Định", null, null, null, null, null, null },
+                    { new Guid("da050aae-b2ea-4745-80ad-fea42f2f3fd4"), null, null, "Lai Châu", null, null, null, null, null, null },
+                    { new Guid("e12f51b9-ec9f-4710-bfe0-b0cc093441bc"), null, null, "Nghệ An", null, null, null, null, null, null },
+                    { new Guid("e3042da3-70dd-44c9-8f92-bba6d9f6d1d9"), null, null, "Vĩnh Phúc", null, null, null, null, null, null },
+                    { new Guid("e9d47bfe-68be-4e28-af3f-6444cd2ae8ba"), null, null, "Bình Dương", null, null, null, null, null, null },
+                    { new Guid("ec9cb8fb-58be-4f4b-b975-44fe8b838191"), null, null, "Hòa Bình", null, null, null, null, null, null },
+                    { new Guid("eead0bd0-3de2-4fc3-99a1-a774e0f49187"), null, null, "Gia Lai", null, null, null, null, null, null },
+                    { new Guid("eefcffd1-b17e-4d45-be11-9e0857d6b433"), null, null, "Thừa Thiên Huế", null, null, null, null, null, null },
+                    { new Guid("fb5c7eac-742a-4c88-ba75-aa274e1404fb"), null, null, "Bắc Ninh", null, null, null, null, null, null },
+                    { new Guid("fe276321-20d1-47be-909d-977db74086e5"), null, null, "Tây Ninh", null, null, null, null, null, null },
+                    { new Guid("fea2144d-a645-4944-a544-52c2f4a9fe6f"), null, null, "Cà Mau", null, null, null, null, null, null }
                 });
 
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "CreatedAt", "Email", "EmailConfirmed", "IsAdmin", "LastLogin", "LockoutEnabled", "LockoutEnd", "Name", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UpdatedAt", "UserName" },
-                values: new object[] { new Guid("0b2863d1-3468-4ad0-8881-ca52cdf1307d"), 0, "616f1653-48e9-4a6f-81b3-1bdd52e565b5", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, false, true, null, true, null, "Admin", null, "ADMIN", "AQAAAAEAACcQAAAAED+SeOCagZl5GUfApy+o5Ne/mqFFBr5h9qlLZ98WSR8NOTMUH7qrRO3/dvl0F5hf5w==", null, false, "ZY5BGSWBARTE74T6ZLO7WKKMMILBEB2E", false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "admin" });
+                values: new object[] { new Guid("0b2863d1-3468-4ad0-8881-ca52cdf1307d"), 0, "616f1653-48e9-4a6f-81b3-1bdd52e565b5", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, false, true, null, true, null, "Admin", null, "ADMIN", "AQAAAAEAACcQAAAAEPH8uBiczPM4CfUP4npJs7EkyD+bJTh8RPG+yHshv8dCpDqyJLLPJR0R/Vf6caAkvg==", null, false, "ZY5BGSWBARTE74T6ZLO7WKKMMILBEB2E", false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "admin" });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Bookings_TourId",
+                table: "Bookings",
+                column: "TourId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_RoleClaims_RoleId",
@@ -416,6 +449,9 @@ namespace Travel_ASP.Migrations
                 name: "Blogs");
 
             migrationBuilder.DropTable(
+                name: "Bookings");
+
+            migrationBuilder.DropTable(
                 name: "Configurations");
 
             migrationBuilder.DropTable(
@@ -423,9 +459,6 @@ namespace Travel_ASP.Migrations
 
             migrationBuilder.DropTable(
                 name: "RoleClaims");
-
-            migrationBuilder.DropTable(
-                name: "Tours");
 
             migrationBuilder.DropTable(
                 name: "UserClaims");
@@ -440,13 +473,16 @@ namespace Travel_ASP.Migrations
                 name: "UserTokens");
 
             migrationBuilder.DropTable(
-                name: "Provinces");
+                name: "Tours");
 
             migrationBuilder.DropTable(
                 name: "Roles");
 
             migrationBuilder.DropTable(
                 name: "Users");
+
+            migrationBuilder.DropTable(
+                name: "Provinces");
         }
     }
 }

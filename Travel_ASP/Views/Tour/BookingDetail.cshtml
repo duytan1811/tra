@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewData["Title"] = "BookingDetail";
+    Layout = "~/Views/Shared/_Layout_admin.cshtml";
+}
+@model Booking
+
+<div class="card">
+    <div class="card-header bg-primary text-white">
+        <label>Chi tiết đặt lịch</label>
+    </div>
+    <div class="card-body">
+        <div class="row pb-3">
+            <div class="col-md-4">Tour</div>
+            <div class="col-md-8">@Model.Tour.Name</div>
+        </div>
+
+        <div class="row pb-3">
+            <div class="col-md-4">Tên người đặt</div>
+            <div class="col-md-8">@Model.FullName</div>
+        </div>
+        <div class="row pb-3">
+            <div class="col-md-4">Email</div>
+            <div class="col-md-8">@Model.Email</div>
+        </div>
+        <div class="row pb-3">
+            <div class="col-md-4">Số điện thoại</div>
+            <div class="col-md-8">@Model.Phone</div>
+        </div>
+        <div class="row pb-3">
+            <div class="col-md-4">Nội dung</div>
+            <div class="col-md-8">@Model.Message</div>
+        </div>
+       
+        <div class="row pb-3 float-right">
+            <div class="col-md-12">
+                <a asp-action="Bookings" asp-controller="Tour" class="btn btn-danger">Quay lại</a>
+            </div>
+        </div>
+    </div>
+</div>
+
